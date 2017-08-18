@@ -5,6 +5,7 @@
 var DateLogic = require('date-logic')
 var calendar = new DateLogic({
     date: new Date(),
+    startWeekDay:'3',
     onChange: function (data) {
         // data format equal monthData() reutrn
         self.setState({
@@ -17,7 +18,11 @@ console.log(data)
 // data format equal monthData() reutrn
 
 // year-month-day , startWeekDay {1}
-calendar.change('2017-9-11', '7')
+calendar.change('2017-9-11')
+calendar.change({
+    date: '2018-12-12',
+    startWeekDay:'7'
+})
 calendar.change(new Date('2017/9/11') )
 // call onChange
 calendar.lastMonth()
