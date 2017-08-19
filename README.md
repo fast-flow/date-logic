@@ -23,7 +23,6 @@ calendar.change({
     date: '2018-12-12',
     startWeekDay:'7'
 })
-calendar.change(new Date('2017/9/11') )
 // call onChange
 calendar.lastMonth()
 // call onChange

@@ -6,17 +6,23 @@ class DateLogic {
 		// 当前所在日期
 		this.date = props.date || new Date()
 		// 日历起始星期
-		// this.defaultStartWeekDay = 1
+		this.startWeekDay = props.startWeekDay || 1
 		// 日历渲染头部 (起始星期为星期一)
-		this.weekDayColumn = [1,2,3,4,5,6,7]
-		this.onChange = props.onChange || function(){}
+		this.weekDayColumn = props.startWeekDay ? this.updateWeekDayCol(props.startWeekDay) : [1,2,3,4,5,6,7]
+		this.onChange = props.onChange || function(){ console.info('未配置onChange') }
 	}
 	// 更新渲染日历头部列
 	/**
 	 * @param {number} firstWeekDay
 	 */
 	updateWeekDayCol = (firstWeekDay) => {
-		firstWeekDay = firstWeekDay || 1
+		// 判断有效数字 非法则不更新
+		firstWeekDay = Number(String(firstWeekDay).replace(/[^\d]|[890]/g,''))
+		if(firstWeekDay > 7 || firstWeekDay < 1 || !firstWeekDay){
+			console.warn('weekDay must between 1~7')
+			return this.weekDayColumn
+		}
+
 		let weekDayColumn = []
 		for(let i=1 ; i <=7 ; i++){
 			if(firstWeekDay > 7){
@@ -25,7 +31,9 @@ class DateLogic {
 			weekDayColumn.push(firstWeekDay)
 			firstWeekDay++
 		}
+		this.startWeekDay = String(firstWeekDay)
 		this.weekDayColumn = extend(true,[],weekDayColumn)
+		return weekDayColumn
 	}
 	// 根据时间获取这一个月的 monthData 数据
 	/**
@@ -105,14 +113,19 @@ class DateLogic {
 	getData = () => {
 		return this.getMonthData()
 	}
-	change = (date, startWeekDay) => {
+	/*
+		{string} settings.date
+		{string} settings.startWeekDay
+	*/
+	change = (settings) => {
+		let date = settings.date
+		let startWeekDay = settings.startWeekDay
+
 		this.date = date ? new Date(date) : new Date()
-		startWeekDay = Number(String(startWeekDay).replace(/[^\d]|[890]/g,''))
-		if(startWeekDay > 7 || startWeekDay < 1){
-			console.warn('startWeekDay must between 1~7')
-		}else{
+		if(startWeekDay){
 			this.updateWeekDayCol(startWeekDay)
 		}
+
 		let result = this.getMonthData()
 		this.onChange(result)
 		return result
