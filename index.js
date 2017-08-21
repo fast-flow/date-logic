@@ -128,7 +128,7 @@ class DateLogic {
 
 		let result = this.getMonthData()
 		this.onChange(result)
-		return result
+		return this.weekDayColumn
 	}
 	lastMonth = () => {
 		this.date.setMonth(this.date.getMonth() - 1)
@@ -147,12 +147,32 @@ class DateLogic {
 		let result = this.getMonthData()
 		this.onChange(result)
 		// return result
-		}
+	}
 	nextYear = () => {
 		this.date.setFullYear(this.date.getFullYear() + 1)
 		let result = this.getMonthData()
 		this.onChange(result)
 		// return result
+	}
+
+	/*
+		{number} days
+	*/
+	changeDays = (days) => {
+		let oldMonth = this.date.getMonth()
+		days = Number(days)
+		if(!days){
+			console.warn('days 不是有效天数')
+			return false
+		}
+		this.date.setDate(this.date.getDate() + days)
+		let newMonth = this.date.getMonth()
+
+		// 月份更换触发配置onchange
+		if(oldMonth !== newMonth){
+			let result = this.getMonthData()
+			this.onChange(result)
+		}
 	}
 }
 

@@ -277,7 +277,7 @@ describe('basic.test.js', function () {
     })
     // 自定义更改时间+渲染起始星期设定
     it('change date+startWeekDay', function (done) {
-        list.change({
+        let weekDayColumn = list.change({
             date : '2008-03' ,
             startWeekDay : '7'
         })
@@ -325,6 +325,7 @@ describe('basic.test.js', function () {
             { year: 2008, month: 4, day: 4, weekDay: 5, nextMonth: true },
             { year: 2008, month: 4, day: 5, weekDay: 6, nextMonth: true }
         ])
+        expect(weekDayColumn).to.eql([ 7, 1, 2, 3, 4, 5, 6 ])
         done()
     })
     // 更改时间为下一年  自动触发配置的onchange
@@ -366,6 +367,41 @@ describe('basic.test.js', function () {
             { year: 2009, month: 4, day: 2, weekDay: 4, nextMonth: true },
             { year: 2009, month: 4, day: 3, weekDay: 5, nextMonth: true },
             { year: 2009, month: 4, day: 4, weekDay: 6, nextMonth: true }
+        ])
+        done()
+    })
+    // 更改时间为向前(后)几天 (月份变换时自动触发配置的onchange)
+    it('changeDays', function (done) {
+        list.changeDays(-3)
+        expect(changeListData).to.eql([
+            { year: 2009, month: 2, day: 1, weekDay: 7, thisMonth: true },
+            { year: 2009, month: 2, day: 2, weekDay: 1, thisMonth: true },
+            { year: 2009, month: 2, day: 3, weekDay: 2, thisMonth: true },
+            { year: 2009, month: 2, day: 4, weekDay: 3, thisMonth: true },
+            { year: 2009, month: 2, day: 5, weekDay: 4, thisMonth: true },
+            { year: 2009, month: 2, day: 6, weekDay: 5, thisMonth: true },
+            { year: 2009, month: 2, day: 7, weekDay: 6, thisMonth: true },
+            { year: 2009, month: 2, day: 8, weekDay: 7, thisMonth: true },
+            { year: 2009, month: 2, day: 9, weekDay: 1, thisMonth: true },
+            { year: 2009, month: 2, day: 10, weekDay: 2, thisMonth: true },
+            { year: 2009, month: 2, day: 11, weekDay: 3, thisMonth: true },
+            { year: 2009, month: 2, day: 12, weekDay: 4, thisMonth: true },
+            { year: 2009, month: 2, day: 13, weekDay: 5, thisMonth: true },
+            { year: 2009, month: 2, day: 14, weekDay: 6, thisMonth: true },
+            { year: 2009, month: 2, day: 15, weekDay: 7, thisMonth: true },
+            { year: 2009, month: 2, day: 16, weekDay: 1, thisMonth: true },
+            { year: 2009, month: 2, day: 17, weekDay: 2, thisMonth: true },
+            { year: 2009, month: 2, day: 18, weekDay: 3, thisMonth: true },
+            { year: 2009, month: 2, day: 19, weekDay: 4, thisMonth: true },
+            { year: 2009, month: 2, day: 20, weekDay: 5, thisMonth: true },
+            { year: 2009, month: 2, day: 21, weekDay: 6, thisMonth: true },
+            { year: 2009, month: 2, day: 22, weekDay: 7, thisMonth: true },
+            { year: 2009, month: 2, day: 23, weekDay: 1, thisMonth: true },
+            { year: 2009, month: 2, day: 24, weekDay: 2, thisMonth: true },
+            { year: 2009, month: 2, day: 25, weekDay: 3, thisMonth: true },
+            { year: 2009, month: 2, day: 26, weekDay: 4, thisMonth: true },
+            { year: 2009, month: 2, day: 27, weekDay: 5, thisMonth: true },
+            { year: 2009, month: 2, day: 28, weekDay: 6, thisMonth: true }
         ])
         done()
     })
