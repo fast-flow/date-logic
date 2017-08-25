@@ -33,7 +33,7 @@ fis.match('{config/**,npm-debug.log,yarn.lock,__test__/**}', {
 })
 
 if (fis.project.currentMedia() === 'npm') {
-    fis.match('**.js', {
+    fis.match('{**.js,example/*.demo.js,example/dev}', {
         parser: [
             function (content, file) {
                 return babel.transform(content, require('./babel.js')).code

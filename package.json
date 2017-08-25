@@ -3,11 +3,14 @@
   "version": "0.1.1",
   "main": "index.js",
   "description": "",
+  "repository": "fast-flow/date-logic",
+  "homepage": "http://fast-flow.github.io/date-logic",
+  "gitUsername": "fast-flow",
+  "gitRepository": "date-logic",
   "keywords": [
     "date",
     "calendar"
   ],
-  "repository": "fast-flow/date-logic",
   "dependencies": {
     "classnames": "^2.2.5",
     "extend": "^3.0.1",

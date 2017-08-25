@@ -175,5 +175,5 @@ class DateLogic {
 		}
 	}
 }
-
+// module.exports = DateLogic
 export default DateLogic

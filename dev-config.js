@@ -2,55 +2,7 @@ var multipart = require('connect-multiparty');
 var multipartMiddleware = multipart();
 module.exports = {
     mockServer: function (app) {
-        app.post('/upload', multipartMiddleware, function(req, res) {
-            console.log(req.body, req.files)
-            res.contentType('text/html')
-            res.send({
-                status: 'success',
-                data: {
-                    id: 'id' + parseInt(Math.random()*1000),
-                    files: req.files
-                }
-            })
-        })
-        app.get('/upload', function (req, res) {
-            res.send(
-                '<form action="/upload" method="post" enctype="multipart/form-data"  >' +
-                '    <input type="file" name="file" />' +
-                '    <button type="submit" >submit</button>' +
-                '</form>'
-            )
-        })
-        app.get('/ajaxupload', function (req, res) {
-            res.send(
-                function () {
-                    /*!
-                    <input id="file" name="file" type="file" />
-                    <script src="http://apps.bdimg.com/libs/jquery/1.9.0/jquery.min.js" ></script>
-                    <script>
-                        $("#file").on("change", function(){
-                          var formData = new FormData()
-                          formData.append("file", $("#file").get(0).files[0])
-                          $.ajax({
-                              url: "/upload",
-                              type: "POST",
-                              data: formData,
-                              processData: false,
-                              contentType: false,
-                              success: function(response){
-                                      document.write(
-                                          '<pre>' +
-                                           response +
-                                          '</pre>'
-                                      )
-                              }
-                          })
-                        })
-                    </script>
-                    */
-                }.toString().replace(/^[^\/]+\/\*!?/, '').replace(/\*\/[^\/]+$/, '').replace(/^[\s\xA0]+/, '').replace(/[\s\xA0]+$/, '') // .trim()
-            )
-        })
+        
     },
     testFiles: [
         (function () {
