@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="keywords" content="date,calendar">
+<meta name="description" content="Basic">
+<title>Basic</title>
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/markrun-themes@latest/vue.css" />
+<link rel="stylesheet" type="text/css" href="https://unpkg.com/markrun-themes@latest/box.css" />
+<style>.hljs{display:block;overflow-x:auto;padding:0.5em;color:#abb2bf;background:#282c34}.hljs-comment,.hljs-quote{color:#5c6370;font-style:italic}.hljs-doctag,.hljs-keyword,.hljs-formula{color:#c678dd}.hljs-section,.hljs-name,.hljs-selector-tag,.hljs-deletion,.hljs-subst{color:#e06c75}.hljs-literal{color:#56b6c2}.hljs-string,.hljs-regexp,.hljs-addition,.hljs-attribute,.hljs-meta-string{color:#98c379}.hljs-built_in,.hljs-class .hljs-title{color:#e6c07b}.hljs-attr,.hljs-variable,.hljs-template-variable,.hljs-type,.hljs-selector-class,.hljs-selector-attr,.hljs-selector-pseudo,.hljs-number{color:#d19a66}.hljs-symbol,.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id,.hljs-title{color:#61aeee}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:bold}.hljs-link{text-decoration:underline}</style>
+<style>
+.markrun {
+margin-bottom: 10px;
+margin-top: 10px;
+}
+.fast-flow-demo {
+border:1px solid #EEE;
+padding: 20px;
+margin-bottom: 10px;
+margin-top: 10px;
+}
+img {border:none;}
+</style>
+<!-- Polyfills --><!-- console-polyfill es5-shim es5-shim/es5-sham es6-shim es6-shim/es6-sham html5shiv media-match -->
+<!--[if lt IE 10]>
+<script src="/date-logic/0.1.2/example/polyfill-lt-ie10.js"></script>
+<![endif]--><!-- es6-shim es6-shim/es6-sham-->
+<!--[if lte IE 11]>
+<script src="/date-logic/0.1.2/example/polyfill-lte-ie11.js"></script>
+<![endif]-->
+<script src="/date-logic/0.1.2/example/es6-promise.auto.js"></script>
+</head>
+<body>
+<div class="markdown-header">
+<a class="markdown-header-logo" href="/date-logic/0.1.2/index.html">
+<img class="markdown-header-logo-photo"  src="https://raw.githubusercontent.com/fast-flow/react/master/logo.png" />
+<span class="markdown-header-logo-text">date-logic</span>
+</a>
+<ul class="markdown-header-nav" >
+<li>
+<a href="/date-logic/0.1.2/doc/index.html" class="markdown-header-nav-link">Document</a>
+</li>
+<li>
+<a href="/date-logic/0.1.2/example/index.html" class="markdown-header-nav-link">Example</a>
+</li>
+<li>
+<a href="https://github.com/fast-flow/date-logic/issues" class="markdown-header-nav-link">Community</a>
+</li>
+</ul>
+</div>
+<div class="markdown-sidebar" id="markrun-sidebar">
+<h3 id="markrunCurrentPageTitle"></h3>
+</div>
+<div class="markdown-content">
+<div class="markdown-body" id="markrun-body" >
+<h1 id="Basic" ><a class="markrun-anchor" href="#Basic"><span class="markrun-anchor-link"></span></a>Basic</h1><h2 id="demo1" ><a class="markrun-anchor" href="#demo1"><span class="markrun-anchor-link"></span></a>demo1</h2><div class="markrun-box"> 
+       <div class="markrun-box-preview"> 
+           <div class="markrun-box-preview-node"><div id="example__basic" >loading...</div></div> 
+           <div class="markrun-box-preview-doc">
+               <div class="markrun-box-preview-doc-title">
+                   <span class="markrun-box-preview-doc-title-text">basic</span>
+               </div> 
+               <div class="markrun-box-preview-doc-desc"><p>可以取到的属性值,所有提供的函数方法,基于这些计算</p></div>
+           </div>
+       </div>
+       <div class="markrun-box-code">
+           <span class="markrun-box-code-copy">COPY</span>
+           <pre class="markrun-box-code-source" ><span class="hljs-keyword">import</span> DateLogic <span class="hljs-keyword">from</span> <span class="hljs-string">'../index'</span>;
+
+<span class="hljs-keyword">var</span> demo1 = <span class="hljs-keyword">new</span> DateLogic({
+    <span class="hljs-attr">date</span> : <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2008-02-16'</span>)
+})
+
+<span class="hljs-keyword">let</span> html = <span class="hljs-string">`
+    &lt;b&gt;today : `</span>+demo1.today.getFullYear()+<span class="hljs-string">`年`</span> +(demo1.today.getMonth()+<span class="hljs-number">1</span>)+<span class="hljs-string">`月`</span>+demo1.today.getDate()+<span class="hljs-string">`日`</span>+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;date : `</span>+demo1.date.getFullYear()+<span class="hljs-string">`年`</span> +(demo1.date.getMonth()+<span class="hljs-number">1</span>)+<span class="hljs-string">`月`</span>+demo1.date.getDate()+<span class="hljs-string">`日`</span>+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;startWeekDay : `</span>+demo1.startWeekDay+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;weekDayColumn : `</span>+demo1.weekDayColumn+<span class="hljs-string">`&lt;/b&gt;
+`</span>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'example__basic'</span>).innerHTML = html
+
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'demo1 getData() : '</span>,demo1.getData())
+</pre>
+       </div>
+       <span class="markrun-box-toggle"></span>
+   </div>
+<h2 id="getData" ><a class="markrun-anchor" href="#getData"><span class="markrun-anchor-link"></span></a>getData</h2><div class="markrun markrun--css">
+<div class="markrun-html"></div>
+<div class="markrun-code">
+<style>
+.demo2 div {
+    text-align: center;
+    border-bottom: 1px dotted #aaa;
+    line-height: 30px;
+    width: 560px;
+}
+.demo2  b , .demo2  i {
+    width: 80px;
+    display: inline-block;
+}</style>
+</div>
+<div class="markrun-source">
+<pre><code class="lang-css"><span class="hljs-selector-class">.demo2</span> <span class="hljs-selector-tag">div</span> {
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> dotted <span class="hljs-number">#aaa</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">30px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">560px</span>;
+}
+<span class="hljs-selector-class">.demo2</span>  <span class="hljs-selector-tag">b</span> , <span class="hljs-selector-class">.demo2</span>  <span class="hljs-selector-tag">i</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">80px</span>;
+    <span class="hljs-attribute">display</span>: inline-block;
+}
+</code></pre></div>
+</div>
+<div class="markrun-box"> 
+       <div class="markrun-box-preview"> 
+           <div class="markrun-box-preview-node"><div id="example__getData" >loading...</div></div> 
+           <div class="markrun-box-preview-doc">
+               <div class="markrun-box-preview-doc-title">
+                   <span class="markrun-box-preview-doc-title-text">getData</span>
+               </div> 
+               <div class="markrun-box-preview-doc-desc"><p>获取到日历渲染当前一个月的所有数据</p></div>
+           </div>
+       </div>
+       <div class="markrun-box-code">
+           <span class="markrun-box-code-copy">COPY</span>
+           <pre class="markrun-box-code-source" ><span class="hljs-keyword">import</span> DateLogic <span class="hljs-keyword">from</span> <span class="hljs-string">'../index'</span>;
+
+<span class="hljs-keyword">var</span> date = <span class="hljs-keyword">new</span> DateLogic({})
+<span class="hljs-keyword">let</span> columnTextMap = {
+    <span class="hljs-string">'1'</span> : <span class="hljs-string">'Monday'</span>,
+    <span class="hljs-string">'2'</span> : <span class="hljs-string">'Tuesday'</span>,
+    <span class="hljs-string">'3'</span> : <span class="hljs-string">'Wednesday'</span>,
+    <span class="hljs-string">'4'</span> : <span class="hljs-string">'Thursday'</span>,
+    <span class="hljs-string">'5'</span> : <span class="hljs-string">'Friday'</span>,
+    <span class="hljs-string">'6'</span> : <span class="hljs-string">'Saturday'</span>,
+    <span class="hljs-string">'7'</span> : <span class="hljs-string">'Sunday'</span>,
+}
+
+<span class="hljs-keyword">let</span> html = <span class="hljs-string">`&lt;div class="demo2" &gt;&lt;div&gt;`</span>+date.today.getFullYear()+<span class="hljs-string">'年'</span> +(date.today.getMonth()+<span class="hljs-number">1</span>)+<span class="hljs-string">'月'</span>+<span class="hljs-string">`&lt;/div&gt;&lt;div&gt;`</span>
+    date.weekDayColumn.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+        html += <span class="hljs-string">`&lt;b&gt;`</span>+columnTextMap[<span class="hljs-built_in">String</span>(item)]+<span class="hljs-string">`&lt;/b&gt;`</span>
+    })
+    html += <span class="hljs-string">`&lt;/div&gt;&lt;div&gt;`</span>
+    date.getData().map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
+        html += <span class="hljs-string">`&lt;i&gt;`</span>+item.day+<span class="hljs-string">`&lt;/i&gt;`</span>
+    })
+    html += <span class="hljs-string">`&lt;/div&gt;&lt;/div&gt;`</span>
+<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'example__getData'</span>).innerHTML = html
+</pre>
+       </div>
+       <span class="markrun-box-toggle"></span>
+   </div>
+<h2 id="changeM_Y" ><a class="markrun-anchor" href="#changeM_Y"><span class="markrun-anchor-link"></span></a>changeM_Y</h2><div class="markrun markrun--css">
+<div class="markrun-html"></div>
+<div class="markrun-code">
+<style>
+.demo3 div {
+    position: relative;
+    text-align: center;
+    width: 560px;
+    line-height: 30px;
+    border-bottom: 1px dotted #aaa;
+}
+.demo3-tool-prev ,
+.demo3-tool-next { position: absolute; }
+.demo3-tool-prev:hover ,
+.demo3-tool-next:hover { cursor: pointer; color: purple; }
+.demo3-tool-prev { left:10px; }
+.demo3-tool-next { right:10px; }
+.demo3-tool-text { width: 100px; }
+.demo3--today { background-color: #87aed0; }
+.demo3--lastMonth ,
+.demo3--nextMonth { background-color: #eee; }
+.demo3 b ,
+.demo3 i { width: 80px; display: inline-block; }</style>
+</div>
+<div class="markrun-source">
+<pre><code class="lang-css"><span class="hljs-selector-class">.demo3</span> <span class="hljs-selector-tag">div</span> {
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">560px</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">30px</span>;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> dotted <span class="hljs-number">#aaa</span>;
+}
+<span class="hljs-selector-class">.demo3-tool-prev</span> ,
+<span class="hljs-selector-class">.demo3-tool-next</span> { <span class="hljs-attribute">position</span>: absolute; }
+<span class="hljs-selector-class">.demo3-tool-prev</span><span class="hljs-selector-pseudo">:hover</span> ,
+<span class="hljs-selector-class">.demo3-tool-next</span><span class="hljs-selector-pseudo">:hover</span> { <span class="hljs-attribute">cursor</span>: pointer; <span class="hljs-attribute">color</span>: purple; }
+<span class="hljs-selector-class">.demo3-tool-prev</span> { <span class="hljs-attribute">left</span>:<span class="hljs-number">10px</span>; }
+<span class="hljs-selector-class">.demo3-tool-next</span> { <span class="hljs-attribute">right</span>:<span class="hljs-number">10px</span>; }
+<span class="hljs-selector-class">.demo3-tool-text</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>; }
+<span class="hljs-selector-class">.demo3--today</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87aed0</span>; }
+<span class="hljs-selector-class">.demo3--lastMonth</span> ,
+<span class="hljs-selector-class">.demo3--nextMonth</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#eee</span>; }
+<span class="hljs-selector-class">.demo3</span> <span class="hljs-selector-tag">b</span> ,
+<span class="hljs-selector-class">.demo3</span> <span class="hljs-selector-tag">i</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">80px</span>; <span class="hljs-attribute">display</span>: inline-block; }
+</code></pre></div>
+</div>
+<div class="markrun-box"> 
+       <div class="markrun-box-preview"> 
+           <div class="markrun-box-preview-node"><div id="example__changeM_Y" >loading...</div></div> 
+           <div class="markrun-box-preview-doc">
+               <div class="markrun-box-preview-doc-title">
+                   <span class="markrun-box-preview-doc-title-text">changeM_Y</span>
+               </div> 
+               <div class="markrun-box-preview-doc-desc"><p>lastMonth nextMonth lastYear nextYear</p></div>
+           </div>
+       </div>
+       <div class="markrun-box-code">
+           <span class="markrun-box-code-copy">COPY</span>
+           <pre class="markrun-box-code-source" ><span class="hljs-keyword">import</span> DateLogic <span class="hljs-keyword">from</span> <span class="hljs-string">'../index'</span>;
+<span class="hljs-keyword">import</span> extend <span class="hljs-keyword">from</span> <span class="hljs-string">'extend'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> cls <span class="hljs-keyword">from</span> <span class="hljs-string">'classnames'</span>;
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo3</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">constructor</span>(props) {
+        <span class="hljs-keyword">super</span>(props)
+        <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">this</span>.list = <span class="hljs-keyword">new</span> DateLogic({
+            <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2017-09-16'</span>),
+            <span class="hljs-attr">startWeekDay</span>:<span class="hljs-string">'3'</span>,
+            <span class="hljs-attr">onChange</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+                <span class="hljs-comment">// data format equal monthData() reutrn</span>
+                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'onChange'</span>)
+                self.setState({
+                    <span class="hljs-attr">monthData</span> : extend(<span class="hljs-literal">true</span>,[],data)
+                })
+            }
+        })
+        <span class="hljs-keyword">this</span>.state = {
+            <span class="hljs-attr">monthData</span>: <span class="hljs-keyword">this</span>.list.getData() || []
+        }
+    }
+    render() {
+        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">let</span> columnTextMap = { <span class="hljs-string">'1'</span> : <span class="hljs-string">'Mon'</span>, <span class="hljs-string">'2'</span> : <span class="hljs-string">'Tue'</span>, <span class="hljs-string">'3'</span> : <span class="hljs-string">'Wed'</span>, <span class="hljs-string">'4'</span> : <span class="hljs-string">'Thu'</span>, <span class="hljs-string">'5'</span> : <span class="hljs-string">'Fri'</span>, <span class="hljs-string">'6'</span> : <span class="hljs-string">'Sat'</span>, <span class="hljs-string">'7'</span> : <span class="hljs-string">'Sun'</span> }
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-prev"</span>
+                        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{function(){</span>
+                            <span class="hljs-attr">self.list.lastYear</span>()
+                        }}
+                    &gt;</span>lastYear<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-next"</span>
+                        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{function(){</span>
+                            <span class="hljs-attr">self.list.nextYear</span>()
+                        }}
+                    &gt;</span>nextYear<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-text"</span> &gt;</span>{self.list.date.getFullYear()+`年`}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-prev"</span>
+                        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{function(){</span>
+                            <span class="hljs-attr">self.list.lastMonth</span>()
+                        }}
+                    &gt;</span>lastMonth<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-next"</span>
+                        <span class="hljs-attr">onClick</span>=<span class="hljs-string">{function(){</span>
+                            <span class="hljs-attr">self.list.nextMonth</span>()
+                        }}
+                    &gt;</span>nextMonth<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-text"</span> &gt;</span>{(self.list.date.getMonth()+1)+`月`}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    {
+                        self.list.weekDayColumn.map(function(item,index){
+                            return (
+                                <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span> &gt;</span>{columnTextMap[item]}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+                            )
+                        })
+                    }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    {
+                        self.state.monthData.map(function(item,index){
+                            return (
+                                <span class="hljs-tag">&lt;<span class="hljs-name">i</span>  <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span>
+                                    <span class="hljs-attr">className</span>=<span class="hljs-string">{cls({</span>
+                                        '<span class="hljs-attr">demo3--lastMonth</span>' <span class="hljs-attr">:</span> <span class="hljs-attr">item.lastMonth</span> ,
+                                        '<span class="hljs-attr">demo3--nextMonth</span>' <span class="hljs-attr">:</span> <span class="hljs-attr">item.nextMonth</span> ,
+                                        '<span class="hljs-attr">demo3--today</span>' <span class="hljs-attr">:</span> <span class="hljs-attr">item.today</span>
+                                    })}
+                                &gt;</span>{item.day}<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                            )
+                        })
+                    }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        )
+    }
+}
+
+<span class="hljs-built_in">module</span>.exports = Demo3
+</pre>
+       </div>
+       <span class="markrun-box-toggle"></span>
+   </div>
+<h2 id="changeDays" ><a class="markrun-anchor" href="#changeDays"><span class="markrun-anchor-link"></span></a>changeDays</h2><div class="markrun markrun--css">
+<div class="markrun-html"></div>
+<div class="markrun-code">
+<style>
+.demo4 div {
+    position: relative;
+    text-align: center;
+    width: 560px;
+    line-height: 30px;
+    border-bottom: 1px dotted #aaa;
+}
+.demo4 input {
+    height: 30px;
+    box-sizing: border-box;
+    line-height: 28px;
+}
+.demo4 button {
+    width: 30px; height: 30px;
+    box-sizing: border-box;
+    line-height: 28px;
+    margin-left: 5px;
+    font-size: 18px;
+    vertical-align: middle;
+    cursor: pointer;
+}
+.demo4--today { background-color: #87aed0; }
+.demo4--lastMonth ,
+.demo4--nextMonth { background-color: #eee; }
+.demo4 b ,
+.demo4 i { width: 80px; display: inline-block; }</style>
+</div>
+<div class="markrun-source">
+<pre><code class="lang-css"><span class="hljs-selector-class">.demo4</span> <span class="hljs-selector-tag">div</span> {
+    <span class="hljs-attribute">position</span>: relative;
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">560px</span>;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">30px</span>;
+    <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> dotted <span class="hljs-number">#aaa</span>;
+}
+<span class="hljs-selector-class">.demo4</span> <span class="hljs-selector-tag">input</span> {
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">28px</span>;
+}
+<span class="hljs-selector-class">.demo4</span> <span class="hljs-selector-tag">button</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">30px</span>; <span class="hljs-attribute">height</span>: <span class="hljs-number">30px</span>;
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">line-height</span>: <span class="hljs-number">28px</span>;
+    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">18px</span>;
+    <span class="hljs-attribute">vertical-align</span>: middle;
+    <span class="hljs-attribute">cursor</span>: pointer;
+}
+<span class="hljs-selector-class">.demo4--today</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87aed0</span>; }
+<span class="hljs-selector-class">.demo4--lastMonth</span> ,
+<span class="hljs-selector-class">.demo4--nextMonth</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#eee</span>; }
+<span class="hljs-selector-class">.demo4</span> <span class="hljs-selector-tag">b</span> ,
+<span class="hljs-selector-class">.demo4</span> <span class="hljs-selector-tag">i</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">80px</span>; <span class="hljs-attribute">display</span>: inline-block; }
+</code></pre></div>
+</div>
+<div class="markrun-box"> 
+       <div class="markrun-box-preview"> 
+           <div class="markrun-box-preview-node"><div id="example__changeDays" >loading...</div></div> 
+           <div class="markrun-box-preview-doc">
+               <div class="markrun-box-preview-doc-title">
+                   <span class="markrun-box-preview-doc-title-text">changeDays</span>
+               </div> 
+               <div class="markrun-box-preview-doc-desc"><p>changeDays</p></div>
+           </div>
+       </div>
+       <div class="markrun-box-code">
+           <span class="markrun-box-code-copy">COPY</span>
+           <pre class="markrun-box-code-source" ><span class="hljs-keyword">import</span> DateLogic <span class="hljs-keyword">from</span> <span class="hljs-string">'../index'</span>;
+<span class="hljs-keyword">import</span> extend <span class="hljs-keyword">from</span> <span class="hljs-string">'extend'</span>;
+<span class="hljs-keyword">import</span> { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> cls <span class="hljs-keyword">from</span> <span class="hljs-string">'classnames'</span>;
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo4</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">constructor</span>(props) {
+        <span class="hljs-keyword">super</span>(props)
+        <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">this</span>.list = <span class="hljs-keyword">new</span> DateLogic({
+            <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2017-09-16'</span>) ,
+            <span class="hljs-attr">startWeekDay</span>:<span class="hljs-string">'3'</span>,
+            <span class="hljs-attr">onChange</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+                <span class="hljs-comment">// data format equal monthData() reutrn</span>
+                self.setState({
+                    <span class="hljs-attr">monthData</span> : extend(<span class="hljs-literal">true</span>,[],data)
+                })
+            }
+        })
+        <span class="hljs-keyword">this</span>.state = {
+            <span class="hljs-attr">date</span> : <span class="hljs-keyword">this</span>.list.date  ,
+            <span class="hljs-attr">number</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">monthData</span> : <span class="hljs-keyword">this</span>.list.getData() || []
+        }
+
+    }
+    render() {
+        <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">let</span> columnTextMap = { <span class="hljs-string">'1'</span> : <span class="hljs-string">'Mon'</span>, <span class="hljs-string">'2'</span> : <span class="hljs-string">'Tue'</span>, <span class="hljs-string">'3'</span> : <span class="hljs-string">'Wed'</span>, <span class="hljs-string">'4'</span> : <span class="hljs-string">'Thu'</span>, <span class="hljs-string">'5'</span> : <span class="hljs-string">'Fri'</span>, <span class="hljs-string">'6'</span> : <span class="hljs-string">'Sat'</span>, <span class="hljs-string">'7'</span> : <span class="hljs-string">'Sun'</span> }
+
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo4"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h7</span>&gt;</span>
+                    changeDays :
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span>  <span class="hljs-attr">onChange</span>=<span class="hljs-string">{function(e){</span>
+                                <span class="hljs-attr">e.target.value</span> = <span class="hljs-string">Number(</span> <span class="hljs-attr">e.target.value.replace</span>(/[^\<span class="hljs-attr">d</span>]+/<span class="hljs-attr">g</span>,'')<span class="hljs-attr">.toString</span>() )
+                                <span class="hljs-attr">self.setState</span>({
+                                    <span class="hljs-attr">number</span> <span class="hljs-attr">:</span> <span class="hljs-attr">e.target.value</span>
+                                })
+                            }}
+                    /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{function(e){</span>
+                                <span class="hljs-attr">if</span>(!<span class="hljs-attr">self.state.number</span>){ <span class="hljs-attr">return</span> <span class="hljs-attr">false</span> }
+                                <span class="hljs-attr">self.list.changeDays</span>(<span class="hljs-attr">self.state.number</span>)
+                                <span class="hljs-attr">self.setState</span>({
+                                    <span class="hljs-attr">date</span> <span class="hljs-attr">:</span> <span class="hljs-attr">self.list.date</span> ,
+                                })
+                            }}
+                    &gt;</span>+<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{function(e){</span>
+                                <span class="hljs-attr">if</span>(!<span class="hljs-attr">self.state.number</span>){ <span class="hljs-attr">return</span> <span class="hljs-attr">false</span> }
+                                <span class="hljs-attr">self.list.changeDays</span>( <span class="hljs-attr">Number</span>('<span class="hljs-attr">-</span>'+<span class="hljs-attr">self.state.number</span>) )
+                                <span class="hljs-attr">self.setState</span>({
+                                    <span class="hljs-attr">date</span> <span class="hljs-attr">:</span> <span class="hljs-attr">self.list.date</span> ,
+                                })
+                            }}
+                    &gt;</span>-<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">h7</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo4-tool-text"</span> &gt;</span>
+                        { self.list.date.getFullYear()+`年`+(self.list.date.getMonth()+1)+`月`+self.list.date.getDate()+`日` }
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    {
+                        self.list.weekDayColumn.map(function(item,index){
+                            return (
+                                <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span> &gt;</span>{columnTextMap[item]}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+                            )
+                        })
+                    }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    {
+                        self.state.monthData.map(function(item,index){
+                            return (
+                                <span class="hljs-tag">&lt;<span class="hljs-name">i</span>  <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span>
+                                    <span class="hljs-attr">className</span>=<span class="hljs-string">{cls({</span>
+                                        '<span class="hljs-attr">demo4--lastMonth</span>' <span class="hljs-attr">:</span> <span class="hljs-attr">item.lastMonth</span> ,
+                                        '<span class="hljs-attr">demo4--nextMonth</span>' <span class="hljs-attr">:</span> <span class="hljs-attr">item.nextMonth</span> ,
+                                        '<span class="hljs-attr">demo4--today</span>' <span class="hljs-attr">:</span> <span class="hljs-attr">item.today</span>
+                                    })}
+                                &gt;</span>{item.day}<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
+                            )
+                        })
+                    }
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        )
+    }
+}
+
+module.exports = Demo4
+</span></pre>
+       </div>
+       <span class="markrun-box-toggle"></span>
+   </div></div>
+</div>
+<div class="markdown-footer" ></div>
+<a href="https://github.com/fast-flow/date-logic" class="github-corner" aria-label="View source on Github"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#67d2f1; color:#fff; position: absolute; top: 0; border: 0; right: 0;z-index:10;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+<script src="/date-logic/0.1.2/example/dev.js?version=0.1.2" ></script>
+<script src="https://unpkg.com/markrun-sidebar@latest/markrun-sidebar.js"></script>
+<script>
+markrunSidebar({
+element: document.getElementById("markrun-sidebar"),
+content: document.getElementById("markrun-body")
+})
+if (document.getElementsByTagName("h1")[0]) {
+document.getElementById("markrunCurrentPageTitle").innerHTML = document.getElementsByTagName("h1")[0].innerHTML
+}
+</script>
+<script src="https://unpkg.com/clipboard@1.6.1/dist/clipboard.min.js" ></script>
+<script src="https://unpkg.com/markrun-themes@latest/box.js"></script>
+</body>
+</html>
