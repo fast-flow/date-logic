@@ -31,6 +31,19 @@ class Demo3 extends Component {
                 <div>
                     <i className="demo3-tool-prev"
                         onClick={function(){
+                            self.list.lastYear()
+                        }}
+                    >lastYear</i>
+                    <i className="demo3-tool-next"
+                        onClick={function(){
+                            self.list.nextYear()
+                        }}
+                    >nextYear</i>
+                    <b className="demo3-tool-text" >{self.list.date.getFullYear()+`年`}</b>
+                </div>
+                <div>
+                    <i className="demo3-tool-prev"
+                        onClick={function(){
                             self.list.lastMonth()
                         }}
                     >lastMonth</i>
@@ -39,7 +52,7 @@ class Demo3 extends Component {
                             self.list.nextMonth()
                         }}
                     >nextMonth</i>
-                <b className="demo3-tool-text" >{self.list.date.getFullYear()+`年`+(self.list.date.getMonth()+1)+`月`}</b>
+                    <b className="demo3-tool-text" >{(self.list.date.getMonth()+1)+`月`}</b>
                 </div>
                 <div>
                     {
