@@ -2,17 +2,35 @@ import extend from 'extend';
 
 class DateLogic {
 	constructor(props){
-		this.today = new Date()
+		this.today = this.dateToStr()
 		// 当前所在日期
-		this.date = props.date || new Date()
+		this.date = props.date ? this.transFormat( props.date ) : this.dateToStr()
 		// 日历起始星期
 		this.startWeekDay = props.startWeekDay || 1
 		// 日历渲染头部 (起始星期为星期一)
 		this.weekDayColumn = props.startWeekDay ? this.updateWeekDayCol(props.startWeekDay) : [1,2,3,4,5,6,7]
 		this.onChange = props.onChange || function(){ console.info('未配置onChange') }
 	}
-	// 更新渲染日历头部列
-	/**
+	// 转换字符串 成为 需要的格式
+	format = (dateStr,format) => {
+
+	}
+	// translate {Date} to {String}
+	dateToStr = (dateObj) => {
+		dateObj = dateObj || new Date()
+		let dateArray =  [
+			dateObj.getFullYear() ,
+			dateObj.getMonth() + 1 ,
+			dateObj.getDate()
+		]
+		// 补足'0'
+		dateArray = dateArray.map(function(item){
+			item = String(item)
+			return item.length < 2 ? '0'+item : item
+		})
+		return dateArray.join('-')
+	}
+	/** 更新渲染日历头部列
 	 * @param {number} firstWeekDay
 	 */
 	updateWeekDayCol = (firstWeekDay) => {
@@ -35,16 +53,15 @@ class DateLogic {
 		this.weekDayColumn = extend(true,[],weekDayColumn)
 		return weekDayColumn
 	}
-	// 根据时间获取这一个月的 monthData 数据
-	/**
+	/** 根据时间获取这一个月的 monthData 数据
 	 * @param {Date} date
 	 */
 	getThisMonthData = (date) => {
-		date = date || this.date
-
-		let year = date.getFullYear()
-		let month = date.getMonth() + 1
-		let day = date.getDate()
+		date = date ? this.dateToStr( new Date(props.date) ) : this.date
+		let dateArray = date.split('-')
+		let year = dateArray[0]
+		let month = dateArray[1]
+		let day = dateArray[2]
 		/*  获取日期是周几 : getDay()
 		 *	return {number} 0~6
 		 *	0 -> 星期天 | 1 -> 星期一 | 2 -> 星期二 | 3 -> 星期三 | 4 -> 星期四 | 5 -> 星期五 | 6 -> 星期六
