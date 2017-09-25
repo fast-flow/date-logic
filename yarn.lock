@@ -1675,6 +1675,10 @@ fd-slicer@~1.0.1:
   dependencies:
     pend "~1.2.0"
 
+fecha@^2.3.1:
+  version "2.3.1"
+  resolved "http://registry.npm.taobao.org/fecha/download/fecha-2.3.1.tgz#921b4e5a9d331aaa9b65c1634b26fc45945f6421"
+
 file-loader@^0.9.0:
   version "0.9.0"
   resolved "http://registry.npm.taobao.org/file-loader/download/file-loader-0.9.0.tgz#1d2daddd424ce6d1b07cfe3f79731bed3617ab42"
@@ -2295,10 +2299,6 @@ isstream@~0.1.2:
 jasmine-core@^2.5.2:
   version "2.7.0"
   resolved "http://registry.npm.taobao.org/jasmine-core/download/jasmine-core-2.7.0.tgz#50ff8c4f92d8ef5c0b2c1b846dd263ed85152091"
-
-jquery@1.11.1:
-  version "1.11.1"
-  resolved "http://registry.npm.taobao.org/jquery/download/jquery-1.11.1.tgz#b6ec928590112ebed69e1e49cbfd0025ccd60ddb"
 
 js-base64@^2.1.9:
   version "2.1.9"

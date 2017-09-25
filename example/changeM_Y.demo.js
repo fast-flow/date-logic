@@ -7,21 +7,22 @@ import cls from 'classnames';
 class Demo3 extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            monthData: []
+        }
+    }
+    componentWillMount(){
         let self = this
-        this.list = new DateLogic({
-            date: new Date('2017-09-16'),
+        self.list = new DateLogic({
+            date: '2017-09-16',
             startWeekDay:'3',
             onChange: function (data) {
-                // data format equal monthData() reutrn
-                console.log('onChange')
+                // console.log('onChange : ',data)
                 self.setState({
-                    monthData : extend(true,[],data)
+                    monthData : extend(true,[],data.render)
                 })
             }
         })
-        this.state = {
-            monthData: this.list.getData() || []
-        }
     }
     render() {
         var self = this
@@ -39,7 +40,7 @@ class Demo3 extends Component {
                             self.list.nextYear()
                         }}
                     >nextYear</i>
-                    <b className="demo3-tool-text" >{self.list.date.getFullYear()+`年`}</b>
+                    <b className="demo3-tool-text" >{self.list.toFormat(self.list.date,'YYYY年') }</b>
                 </div>
                 <div>
                     <i className="demo3-tool-prev"
@@ -52,7 +53,7 @@ class Demo3 extends Component {
                             self.list.nextMonth()
                         }}
                     >nextMonth</i>
-                    <b className="demo3-tool-text" >{(self.list.date.getMonth()+1)+`月`}</b>
+                    <b className="demo3-tool-text" >{self.list.toFormat(self.list.date,'MM月') }</b>
                 </div>
                 <div>
                     {

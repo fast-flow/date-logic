@@ -5,12 +5,12 @@ import expect from 'expect.js';
 describe('basic.test.js', function () {
     var changeListData = []
     var list = new DateLogic({
-        date: new Date('2017-07-16'),
+        date: '2017-07-16',
         startWeekDay:'3',
         onChange: function (data) {
             // data format equal monthData() reutrn
             console.log('onChange')
-            changeListData = extend(true,[],data)
+            changeListData = extend(true,[],data.render)
         }
     })
     // 日历渲染的起始星期
@@ -277,10 +277,11 @@ describe('basic.test.js', function () {
     })
     // 自定义更改时间+渲染起始星期设定
     it('change date+startWeekDay', function (done) {
-        let weekDayColumn = list.change({
+        list.change({
             date : '2008-03' ,
             startWeekDay : '7'
         })
+        let weekDayColumn = list.weekDayColumn
         expect(changeListData).to.eql([
             { year: 2008, month: 2, day: 24, weekDay: 7, lastMonth: true },
             { year: 2008, month: 2, day: 25, weekDay: 1, lastMonth: true },
