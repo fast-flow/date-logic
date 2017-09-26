@@ -8,22 +8,26 @@ class Demo4 extends Component {
     constructor(props) {
         super(props)
         let self = this
-        this.list = new DateLogic({
-            date: new Date('2017-09-16') ,
+        this.state = {
+            date : '' ,
+            number: '',
+            monthData : []
+        }
+
+    }
+    componentWillMount(){
+        let self = this
+        self.list = new DateLogic({
+            date: '2017-09-16' ,
             startWeekDay:'3',
             onChange: function (data) {
                 // data format equal monthData() reutrn
                 self.setState({
-                    monthData : extend(true,[],data)
+                    date : data.date ,
+                    monthData : extend(true,[],data.render)
                 })
             }
         })
-        this.state = {
-            date : this.list.date  ,
-            number: '',
-            monthData : this.list.getData() || []
-        }
-
     }
     render() {
         var self = this
@@ -59,7 +63,7 @@ class Demo4 extends Component {
             </h7>
                 <div>
                     <span className="demo4-tool-text" >
-                        { self.list.date.getFullYear()+`年`+(self.list.date.getMonth()+1)+`月`+self.list.date.getDate()+`日` }
+                        { self.list.toFormat(self.list.date,'YYYY年MM月DD日') }
                     </span>
                 </div>
                 <div>

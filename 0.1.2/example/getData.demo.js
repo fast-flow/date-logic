@@ -11,7 +11,7 @@ let columnTextMap = {
     '7' : 'Sunday',
 }
 
-let html = `<div class="demo2" ><div>`+date.today.getFullYear()+'年' +(date.today.getMonth()+1)+'月'+`</div><div>`
+let html = `<div class="demo2" ><div>`+date.toFormat(date.today,'YYYY年MM月DD日')+`</div><div>`
     date.weekDayColumn.map(function(item){
         html += `<b>`+columnTextMap[String(item)]+`</b>`
     })

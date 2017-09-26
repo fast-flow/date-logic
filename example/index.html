@@ -70,18 +70,18 @@ img {border:none;}
            <pre class="markrun-box-code-source" ><span class="hljs-keyword">import</span> DateLogic <span class="hljs-keyword">from</span> <span class="hljs-string">'../index'</span>;
 
 <span class="hljs-keyword">var</span> demo1 = <span class="hljs-keyword">new</span> DateLogic({
-    <span class="hljs-attr">date</span> : <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2008-02-16'</span>)
+    <span class="hljs-attr">date</span> : <span class="hljs-string">'2008-02-16'</span>
 })
 
 <span class="hljs-keyword">let</span> html = <span class="hljs-string">`
-    &lt;b&gt;today : `</span>+demo1.today.getFullYear()+<span class="hljs-string">`年`</span> +(demo1.today.getMonth()+<span class="hljs-number">1</span>)+<span class="hljs-string">`月`</span>+demo1.today.getDate()+<span class="hljs-string">`日`</span>+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
-    &lt;b&gt;date : `</span>+demo1.date.getFullYear()+<span class="hljs-string">`年`</span> +(demo1.date.getMonth()+<span class="hljs-number">1</span>)+<span class="hljs-string">`月`</span>+demo1.date.getDate()+<span class="hljs-string">`日`</span>+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;today : `</span>+demo1.today+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
+    &lt;b&gt;date : `</span>+demo1.date+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
     &lt;b&gt;startWeekDay : `</span>+demo1.startWeekDay+<span class="hljs-string">`&lt;/b&gt;&lt;br/&gt;
     &lt;b&gt;weekDayColumn : `</span>+demo1.weekDayColumn+<span class="hljs-string">`&lt;/b&gt;
 `</span>
 <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">'example__basic'</span>).innerHTML = html
 
-<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'demo1 getData() : '</span>,demo1.getData())
+<span class="hljs-built_in">console</span>.log(<span class="hljs-string">'demo1 : '</span>,demo1)
 </pre>
        </div>
        <span class="markrun-box-toggle"></span>
@@ -139,7 +139,7 @@ img {border:none;}
     <span class="hljs-string">'7'</span> : <span class="hljs-string">'Sunday'</span>,
 }
 
-<span class="hljs-keyword">let</span> html = <span class="hljs-string">`&lt;div class="demo2" &gt;&lt;div&gt;`</span>+date.today.getFullYear()+<span class="hljs-string">'年'</span> +(date.today.getMonth()+<span class="hljs-number">1</span>)+<span class="hljs-string">'月'</span>+<span class="hljs-string">`&lt;/div&gt;&lt;div&gt;`</span>
+<span class="hljs-keyword">let</span> html = <span class="hljs-string">`&lt;div class="demo2" &gt;&lt;div&gt;`</span>+date.toFormat(date.today,<span class="hljs-string">'YYYY年MM月DD日'</span>)+<span class="hljs-string">`&lt;/div&gt;&lt;div&gt;`</span>
     date.weekDayColumn.map(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">item</span>)</span>{
         html += <span class="hljs-string">`&lt;b&gt;`</span>+columnTextMap[<span class="hljs-built_in">String</span>(item)]+<span class="hljs-string">`&lt;/b&gt;`</span>
     })
@@ -220,21 +220,22 @@ img {border:none;}
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Demo3</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
     <span class="hljs-keyword">constructor</span>(props) {
         <span class="hljs-keyword">super</span>(props)
+        <span class="hljs-keyword">this</span>.state = {
+            <span class="hljs-attr">monthData</span>: []
+        }
+    }
+    componentWillMount(){
         <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
-        <span class="hljs-keyword">this</span>.list = <span class="hljs-keyword">new</span> DateLogic({
-            <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2017-09-16'</span>),
+        self.list = <span class="hljs-keyword">new</span> DateLogic({
+            <span class="hljs-attr">date</span>: <span class="hljs-string">'2017-09-16'</span>,
             <span class="hljs-attr">startWeekDay</span>:<span class="hljs-string">'3'</span>,
             <span class="hljs-attr">onChange</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
-                <span class="hljs-comment">// data format equal monthData() reutrn</span>
-                <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'onChange'</span>)
+                <span class="hljs-comment">// console.log('onChange : ',data)</span>
                 self.setState({
-                    <span class="hljs-attr">monthData</span> : extend(<span class="hljs-literal">true</span>,[],data)
+                    <span class="hljs-attr">monthData</span> : extend(<span class="hljs-literal">true</span>,[],data.render)
                 })
             }
         })
-        <span class="hljs-keyword">this</span>.state = {
-            <span class="hljs-attr">monthData</span>: <span class="hljs-keyword">this</span>.list.getData() || []
-        }
     }
     render() {
         <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
@@ -252,7 +253,7 @@ img {border:none;}
                             <span class="hljs-attr">self.list.nextYear</span>()
                         }}
                     &gt;</span>nextYear<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-text"</span> &gt;</span>{self.list.date.getFullYear()+`年`}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-text"</span> &gt;</span>{self.list.toFormat(self.list.date,'YYYY年') }<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-prev"</span>
@@ -265,7 +266,7 @@ img {border:none;}
                             <span class="hljs-attr">self.list.nextMonth</span>()
                         }}
                     &gt;</span>nextMonth<span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-text"</span> &gt;</span>{(self.list.date.getMonth()+1)+`月`}<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">b</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo3-tool-text"</span> &gt;</span>{self.list.toFormat(self.list.date,'MM月') }<span class="hljs-tag">&lt;/<span class="hljs-name">b</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                     {
@@ -383,22 +384,26 @@ img {border:none;}
     <span class="hljs-keyword">constructor</span>(props) {
         <span class="hljs-keyword">super</span>(props)
         <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
-        <span class="hljs-keyword">this</span>.list = <span class="hljs-keyword">new</span> DateLogic({
-            <span class="hljs-attr">date</span>: <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'2017-09-16'</span>) ,
+        <span class="hljs-keyword">this</span>.state = {
+            <span class="hljs-attr">date</span> : <span class="hljs-string">''</span> ,
+            <span class="hljs-attr">number</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">monthData</span> : []
+        }
+
+    }
+    componentWillMount(){
+        <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+        self.list = <span class="hljs-keyword">new</span> DateLogic({
+            <span class="hljs-attr">date</span>: <span class="hljs-string">'2017-09-16'</span> ,
             <span class="hljs-attr">startWeekDay</span>:<span class="hljs-string">'3'</span>,
             <span class="hljs-attr">onChange</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
                 <span class="hljs-comment">// data format equal monthData() reutrn</span>
                 self.setState({
-                    <span class="hljs-attr">monthData</span> : extend(<span class="hljs-literal">true</span>,[],data)
+                    <span class="hljs-attr">date</span> : data.date ,
+                    <span class="hljs-attr">monthData</span> : extend(<span class="hljs-literal">true</span>,[],data.render)
                 })
             }
         })
-        <span class="hljs-keyword">this</span>.state = {
-            <span class="hljs-attr">date</span> : <span class="hljs-keyword">this</span>.list.date  ,
-            <span class="hljs-attr">number</span>: <span class="hljs-string">''</span>,
-            <span class="hljs-attr">monthData</span> : <span class="hljs-keyword">this</span>.list.getData() || []
-        }
-
     }
     render() {
         <span class="hljs-keyword">var</span> self = <span class="hljs-keyword">this</span>
@@ -434,7 +439,7 @@ img {border:none;}
             <span class="hljs-tag">&lt;/<span class="hljs-name">h7</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
                     <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"demo4-tool-text"</span> &gt;</span>
-                        { self.list.date.getFullYear()+`年`+(self.list.date.getMonth()+1)+`月`+self.list.date.getDate()+`日` }
+                        { self.list.toFormat(self.list.date,'YYYY年MM月DD日') }
                     <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
                 <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
                 <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
