@@ -3,10 +3,12 @@ import fecha from 'fecha';
 
 class DateLogic {
 	constructor(props){
-		this.today = this.dateToStr()
-		// 当前所在日期
-		this.date = props.date ? this.toFormat(props.date) : this.dateToStr()
+		/* 是否让用户配置 待定*/
 		this.format = props.format || 'YYYY-MM-DD'
+
+		this.today = this.dateToStr(new Date(),this.format)
+		// 当前所在日期
+		this.date = props.date ? this.toFormat({date:props.date}) : this.today
 		// 日历起始星期
 		this.startWeekDay = props.startWeekDay || 1
 		// 日历渲染头部 (起始星期为星期一)
@@ -20,21 +22,33 @@ class DateLogic {
 			render : this.getData()
 		})
 	}
-	// translate {String} to {String}
-	toFormat = (dateStr , formatStr) => {
+	/* translate {String} to {String}
+		@param {Object} settings
+		@param {String} settings.in
+		@param {String} settings.date
+		@param {String} settings.output
+	*/
+	toFormat = (settings) => {
 		let self = this
-		let defaultDateObj = self.date ? new Date(self.date) : new Date()
-		let dateObj = new Date(dateStr) || defaultDateObj
-		formatStr = formatStr || self.format
-		return fecha.format(dateObj , formatStr);
+		settings = settings || {}
+		settings.in  = settings.in  || self.format
+		settings.date = settings.date || self.date
+		settings.output = settings.output || self.format
+
+		let dateObj = fecha.parse(settings.date,settings.in)
+		return fecha.format(dateObj , settings.output);
 	}
+	/* trans 合并 */ 
 	// translate {Date} to {String}
-	dateToStr = (dateObj) => {
+	dateToStr = (dateObj,formatStr) => {
 		let self = this
-		let defaultDateObj = self.date ? new Date(self.date) : new Date()
-		dateObj = dateObj || defaultDateObj
-		// console.log('dateToStr : ',dateObj,new Date(),fecha.format(new Date() , 'YYYY-MM-DD'))
-		return fecha.format(dateObj , this.format);
+		return fecha.format(dateObj , formatStr)
+	}
+	// translate {String} to {Date}
+	strToDate = (dateStr,formatStr) => {
+		let self = this
+		// console.log('strToDate : ', defaultDateStr ,dateStr , self.format )
+		return fecha.parse(dateStr,formatStr) || fecha.parse(self.date,self.format)
 	}
 	/** 更新渲染日历头部列
 	 * @param {number} firstWeekDay
@@ -66,8 +80,9 @@ class DateLogic {
 	getThisMonthData = (dateStr) => {
 		let self = this
 
-		dateStr = dateStr || self.dateToStr()
-		let dateArray = dateStr.split('-')
+		dateStr = dateStr || self.date
+		let dateObj = self.strToDate(dateStr,self.format)
+		let dateArray = self.dateToStr(dateObj , 'YYYY-MM-DD').split('-')
 		let year = dateArray[0]
 		let month = dateArray[1]
 		let day = dateArray[2]
@@ -81,9 +96,19 @@ class DateLogic {
 		let thisMonthData = [] // 这个月的渲染数据
 		// let todayString = this.today.toString().replace(/\d{2}\:\d{2}\:\d{2}.+$/,'')
 		for(let i=1 ; i<=dayLength ; i++){
-			let tempData = { year: year, month: month, day: i , weekDay: firstDayWeekDay }
+			let tempData = { 
+				year: year, 
+				month: month, 
+				day: i , 
+				weekDay: firstDayWeekDay , 
+				date: self.toFormat({
+					in:'YYYY-MM-D',
+					date:year+'-'+month+'-'+i ,
+					output:'YYYY-MM-DD',
+				})
+			}
 			// 判断是否添加isToday属性
-			let isTody = self.today == self.dateToStr( new Date(year+'-'+month+'-'+i) )
+			let isTody = self.today == self.dateToStr( new Date(year+'-'+month+'-'+i) ,'YYYY-MM-DD')
 			if(isTody){
 				tempData.today = true
 			}
@@ -107,10 +132,10 @@ class DateLogic {
 		// 判断是否需要获取上个月数据
 		let lastMonthData = []
 		if(lastMonthLength > 0){
-			let dateObj = new Date(self.date)
+			let dateObj =  self.strToDate(self.date,self.format)
 			let lastMonthDateObj = dateObj
 				lastMonthDateObj.setMonth( dateObj.getMonth() - 1)
-			let lastMonthDateStr = self.dateToStr(lastMonthDateObj)
+			let lastMonthDateStr = self.dateToStr(lastMonthDateObj,self.format)
 			// 上月一整个月数据
 			lastMonthData = self.getThisMonthData(lastMonthDateStr).map(function(item){
 				item.lastMonth = true
@@ -129,10 +154,10 @@ class DateLogic {
 		// 判断是否需要获取下个月数据
 		let nextMonthData = []
 		if(nextMonthLength > 0){
-			let dateObj = new Date(self.date)
+			let dateObj = self.strToDate(self.date,self.format)
 			let nextMonthDateObj = dateObj
 				nextMonthDateObj.setMonth( dateObj.getMonth() + 1)
-			let nextMonthDateStr = self.dateToStr(nextMonthDateObj)
+			let nextMonthDateStr = self.dateToStr(nextMonthDateObj,self.format)
 			// 下月一整个月数据
 			nextMonthData = self.getThisMonthData(nextMonthDateStr).map(function(item){
 				item.nextMonth = true
@@ -157,7 +182,7 @@ class DateLogic {
 		let self = this
 		settings = settings || {}
 		// settings.date = self.toFormat(settings.date)
-		self.date = self.toFormat(settings.date)
+		self.date = self.toFormat({date :settings.date})
 		settings.startWeekDay = settings.startWeekDay || ''
 
 		if(settings.startWeekDay){
@@ -166,74 +191,82 @@ class DateLogic {
 
 		let result = self.getMonthData()
 		self.onChange({
-			today : self.today ,
-			date : self.date ,
+			today : self.toFormat({date :self.today}) ,
+			date : self.toFormat({date :self.date}) ,
 			weekDayColumn : self.weekDayColumn ,
 			render : result
 		})
 	}
 	lastMonth = () => {
 		let self = this
-		let dateObj = new Date(self.date)
+		let dateObj = self.strToDate(self.date,self.format)
 		dateObj.setMonth(dateObj.getMonth() - 1)
-		self.date = self.dateToStr(dateObj)
+		self.date = self.dateToStr(dateObj,self.format)
 
 		let result = self.getMonthData()
+		let date = self.toFormat({date :self.date})
 		self.onChange({
-			today : self.today ,
-			date : self.date ,
+			today : self.toFormat({date :self.today}) ,
+			date : date ,
 			weekDayColumn : self.weekDayColumn ,
 			render : result
 		})
+		return date
 	}
 	nextMonth = () => {
 		let self = this
-		let dateObj = new Date(self.date)
+		let dateObj = self.strToDate(self.date,self.format)
 		dateObj.setMonth(dateObj.getMonth() + 1)
-		self.date = self.dateToStr(dateObj)
+		self.date = self.dateToStr(dateObj,self.format)
 
 		let result = self.getMonthData()
+		let date = self.toFormat({date :self.date})
 		self.onChange({
-			today : self.today ,
-			date : self.date ,
+			today : self.toFormat({date :self.today}) ,
+			date : date ,
 			weekDayColumn : self.weekDayColumn ,
 			render : result
 		})
+		return date
 	}
 	lastYear = () => {
 		let self = this
-		let dateObj = new Date(self.date)
+		let dateObj = self.strToDate(self.date,self.format)
 		dateObj.setFullYear(dateObj.getFullYear() - 1)
-		self.date = self.dateToStr(dateObj)
+		self.date = self.dateToStr(dateObj,self.format)
 
 		let result = self.getMonthData()
+		let date = self.toFormat({date :self.date})
 		self.onChange({
-			today : self.today ,
-			date : self.date ,
+			today : self.toFormat({date :self.today}) ,
+			date : date ,
 			weekDayColumn : self.weekDayColumn ,
 			render : result
 		})
+		return date
 	}
 	nextYear = () => {
 		let self = this
-		let dateObj = new Date(self.date)
+		let dateObj = self.strToDate(self.date,self.format)
 		dateObj.setFullYear(dateObj.getFullYear() + 1)
-		self.date = self.dateToStr(dateObj)
+		self.date = self.dateToStr(dateObj,self.format)
 
 		let result = self.getMonthData()
+		let date = self.toFormat({date :self.date})
 		self.onChange({
-			today : self.today ,
-			date : self.date ,
+			today : self.toFormat({date :self.today}) ,
+			date : date ,
 			weekDayColumn : self.weekDayColumn ,
 			render : result
 		})
+		return date
 	}
 	/*
 		{number} days
 	*/
 	changeDays = (days) => {
 		let self = this
-		let dateObj = new Date(self.date)
+		let dateObj = self.strToDate(self.date,self.format)
 
 		days = Number(days)
 		if(!days){
@@ -244,17 +277,19 @@ class DateLogic {
 		let oldMonth = dateObj.getMonth()
 		dateObj.setDate(dateObj.getDate() + days)
 		let newMonth = dateObj.getMonth()
-		self.date = self.dateToStr(dateObj)
+		self.date = self.dateToStr(dateObj,self.format)
 
 		// 月份更换触发配置onchange
 		if(oldMonth !== newMonth){
 			let result = self.getMonthData()
+			let date = self.toFormat({date :self.date})
 			self.onChange({
-				today : self.today ,
-				date : self.date ,
+				today : self.toFormat({date :self.today}) ,
+				date : date ,
 				weekDayColumn : self.weekDayColumn ,
 				render : result
 			})
+			return date
 		}
 	}
 }
