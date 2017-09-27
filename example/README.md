@@ -10,6 +10,14 @@
     file: './basic.demo.js'
 }
 ````
+## change
+
+## toFormat
+
+## dateToStr
+
+## strToDate
+
 
 ## getData
 

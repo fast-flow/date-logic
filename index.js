@@ -96,20 +96,21 @@ class DateLogic {
 		let thisMonthData = [] // 这个月的渲染数据
 		// let todayString = this.today.toString().replace(/\d{2}\:\d{2}\:\d{2}.+$/,'')
 		for(let i=1 ; i<=dayLength ; i++){
+			let tempDate = self.toFormat({
+				in:'YYYY-MM-D',
+				date:String(year+'-'+month+'-'+i) ,
+				output:'YYYY-MM-DD',
+			})
 			let tempData = { 
 				year: year, 
 				month: month, 
 				day: i , 
 				weekDay: firstDayWeekDay , 
-				date: self.toFormat({
-					in:'YYYY-MM-D',
-					date:year+'-'+month+'-'+i ,
-					output:'YYYY-MM-DD',
-				})
+				date: tempDate
 			}
 			// 判断是否添加isToday属性
-			let isTody = self.today == self.dateToStr( new Date(year+'-'+month+'-'+i) ,'YYYY-MM-DD')
-			if(isTody){
+			let isToday = self.today == tempDate
+			if(isToday){
 				tempData.today = true
 			}
 			// 更新星期
