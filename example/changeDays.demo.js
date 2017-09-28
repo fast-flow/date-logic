@@ -44,26 +44,30 @@ class Demo4 extends Component {
                                 })
                             }}
                     />
-                <button onClick={function(e){
-                                if(!self.state.number){ return false }
-                                self.list.changeDays(self.state.number)
-                                self.setState({
-                                    date : self.list.date ,
-                                })
-                            }}
-                    >+</button>
-                <button onClick={function(e){
-                                if(!self.state.number){ return false }
-                                self.list.changeDays( Number('-'+self.state.number) )
-                                self.setState({
-                                    date : self.list.date ,
-                                })
-                            }}
-                    >-</button>
-            </h7>
+                    <button onClick={function(e){
+                                    if(!self.state.number){ return false }
+                                    self.list.changeDays(self.state.number)
+                                    self.setState({
+                                        date : self.list.date ,
+                                    })
+                                }}
+                        >+</button>
+                    <button onClick={function(e){
+                                    if(!self.state.number){ return false }
+                                    self.list.changeDays( Number('-'+self.state.number) )
+                                    self.setState({
+                                        date : self.list.date ,
+                                    })
+                                }}
+                        >-</button>
+                </h7>
                 <div>
                     <span className="demo4-tool-text" >
-                        { self.list.toFormat(self.list.date,'YYYY年MM月DD日') }
+                        {self.list.toFormat({
+                            in:'YYYY-MM-DD',
+                            date:self.list.date,
+                            output:'YYYY年MM月DD日'
+                        })}
                     </span>
                 </div>
                 <div>

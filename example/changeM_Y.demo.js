@@ -40,7 +40,13 @@ class Demo3 extends Component {
                             self.list.nextYear()
                         }}
                     >nextYear</i>
-                    <b className="demo3-tool-text" >{self.list.toFormat(self.list.date,'YYYY年') }</b>
+                    <b className="demo3-tool-text" >
+                        {self.list.toFormat({
+                            in:'YYYY-MM-DD',
+                            date:self.list.date,
+                            output:'YYYY年'
+                        })}
+                    </b>
                 </div>
                 <div>
                     <i className="demo3-tool-prev"
@@ -53,7 +59,13 @@ class Demo3 extends Component {
                             self.list.nextMonth()
                         }}
                     >nextMonth</i>
-                    <b className="demo3-tool-text" >{self.list.toFormat(self.list.date,'MM月') }</b>
+                    <b className="demo3-tool-text" >
+                        {self.list.toFormat({
+                            in:'YYYY-MM-DD',
+                            date:self.list.date,
+                            output:'MM月'
+                        })}
+                    </b>
                 </div>
                 <div>
                     {

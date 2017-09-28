@@ -4,8 +4,14 @@ var render = ReactDOM.render
 // basic
 import './basic.demo.js'
 
-// getData
-import './getData.demo.js'
+// change
+;(function (node) {
+    if (!node) {return}
+    require(['./change.demo.js'], function (Demo) {
+        Demo = Demo.default || Demo
+        render(<Demo />, node)
+    })
+})(document.getElementById('example__change'))
 
 // changeM_Y
 ;(function (node) {

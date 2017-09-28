@@ -10,7 +10,6 @@
     file: './basic.demo.js'
 }
 ````
-## change
 
 ## toFormat
 
@@ -19,27 +18,35 @@
 ## strToDate
 
 
-## getData
+## change
 
 ````css
 .demo2 div {
     text-align: center;
     border-bottom: 1px dotted #aaa;
     line-height: 30px;
-    width: 560px;
+    width: 420px;
 }
 .demo2  b , .demo2  i {
-    width: 80px;
+    width: 60px;
     display: inline-block;
 }
+.demo2  b , .demo2  i:hover {
+    background-color: #ccc;
+    cursor:pointer;
+}
+.demo2--today { background-color: #87aed0; }
+.demo2--lastMonth ,
+.demo2--nextMonth { background-color: #eee; }
+.demo2--on { background-color: #ce7272; }
 ````
 
 ````demo
 {
-    title: 'getData',
-    html: '<div id="example__getData" >loading...</div>',
-    desc: '获取到日历渲染当前一个月的所有数据',
-    file: './getData.demo.js'
+    title: 'change',
+    html: '<div id="example__change" >loading...</div>',
+    desc: '改变到日历到某一个特定日期',
+    file: './change.demo.js'
 }
 ````
 
@@ -49,7 +56,7 @@
 .demo3 div {
     position: relative;
     text-align: center;
-    width: 560px;
+    width: 420px;
     line-height: 30px;
     border-bottom: 1px dotted #aaa;
 }
@@ -64,7 +71,7 @@
 .demo3--lastMonth ,
 .demo3--nextMonth { background-color: #eee; }
 .demo3 b ,
-.demo3 i { width: 80px; display: inline-block; }
+.demo3 i { width: 60px; display: inline-block; }
 ````
 
 ````demo
@@ -82,7 +89,7 @@
 .demo4 div {
     position: relative;
     text-align: center;
-    width: 560px;
+    width: 420px;
     line-height: 30px;
     border-bottom: 1px dotted #aaa;
 }
@@ -104,7 +111,7 @@
 .demo4--lastMonth ,
 .demo4--nextMonth { background-color: #eee; }
 .demo4 b ,
-.demo4 i { width: 80px; display: inline-block; }
+.demo4 i { width: 60px; display: inline-block; }
 ````
 
 ````demo
