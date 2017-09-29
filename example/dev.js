@@ -4,6 +4,9 @@ var render = ReactDOM.render
 // basic
 import './basic.demo.js'
 
+// format
+import './format.demo.js'
+
 // change
 ;(function (node) {
     if (!node) {return}

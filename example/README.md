@@ -11,12 +11,16 @@
 }
 ````
 
-## toFormat
+## format
 
-## dateToStr
-
-## strToDate
-
+````demo
+{
+    title: 'format',
+    html: '<div id="example__format" >loading...</div>',
+    desc: '类型转换 toFormat dateToStr strToDate',
+    file: './format.demo.js'
+}
+````
 
 ## change
 
