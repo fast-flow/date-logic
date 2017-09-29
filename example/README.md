@@ -17,7 +17,7 @@
 {
     title: 'format',
     html: '<div id="example__format" >loading...</div>',
-    desc: '类型转换 toFormat dateToStr strToDate',
+    desc: '类型转换 toFormat dateToStr strToDate (tip: 转换字符不要带时间转换的关键字母,例:M MM D DD Do dddd mm HH ss ...)',
     file: './format.demo.js'
 }
 ````
