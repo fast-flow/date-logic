@@ -90,7 +90,8 @@ class DateLogic {
 		 *	return {number} 0~6
 		 *	0 -> 星期天 | 1 -> 星期一 | 2 -> 星期二 | 3 -> 星期三 | 4 -> 星期四 | 5 -> 星期五 | 6 -> 星期六
 		 */
-		let firstDayWeekDay = new Date(year+'-'+month+'-1').getDay() || 7 // 获取1号是星期几
+		let firstDay = year+'-'+month+'-01'
+		let firstDayWeekDay = new Date(firstDay).getDay() || 7 // 获取1号是星期几
 		let dayLength = new Date(year,month,'0').getDate() // 获取这个月的天数
 
 		let thisMonthData = [] // 这个月的渲染数据
