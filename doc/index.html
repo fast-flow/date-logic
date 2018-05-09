@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="theme/face/face.css">
+<meta name="keywords" content="">
+<meta name="description" content="文档">
+<title>文档</title>
+</head>
+<body>
+<div class="face-one-head">
+    <a class="face-one-head-logo" href="../index.html">
+        <img src="theme/media/logo.svg" alt="" class="face-one-head-logo-photo" />
+        date-logic
+    </a>
+    <span class="face-one-head-slogan">
+        Write less code, do more things!
+    </span>
+    <!-- <div class="face-one-head-search">
+        <span class="face-one-head-search-icon fi fi-search"></span>
+        <input type="text" class="face-one-head-search-input" placeholder="搜索..." />
+    </div> -->
+    <div class="face-one-head-nav">
+        <span class="face-one-head-nav-switch fi fi-bars"></span>
+        <div class="face-one-head-nav-F-cnt">
+            <a href="../index.html" class="face-one-head-nav-link">首页</a>
+            <a href="intro.html" class="face-one-head-nav-link">指引</a>
+            <a href="index.html" class="face-one-head-nav-link">文档</a>
+        </div>
+        <script>
+        Array.from(document.querySelectorAll('.face-one-head-nav-link')).forEach(function (node) {
+            if (node.href) {
+                var pathname = node.href.replace(/\?.*/, '')
+                if (pathname === location.origin + location.pathname) {
+                    node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-head-nav-link--on')
+                }
+            }
+        })
+        </script>
+    </div>
+</div>
+
+<div class="face-one-layout">
+<div class="face-one-layout-F-line">
+<div class="face-one-layout-sidebar">
+<div class="face-one-nav">
+<span class="face-one-nav-switch fi fi-angle-double-right"></span>
+<div class="face-one-nav-F-inner">
+<div class="face-one-nav-item">
+    <a href="intro.html" class="face-one-nav-item-label">指引</a>
+</div>
+<div class="face-one-nav-item">
+    <a href="index.html" class="face-one-nav-item-label">文档</a>
+</div>
+<!-- face-one-nav-item--group-on 控制默认展开 -->
+<!-- <div class="face-one-nav-item face-one-nav-item--group face-one-nav-item--group-on">
+    <span class="face-one-nav-item-switch fi fi-down"></span>
+    <span class="face-one-nav-item-label">
+        文档
+    </span>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">示例</div>
+        <a href="index.html#style" class="face-one-nav-item-group-item">颜色</a>
+        <a href="index.html#border" class="face-one-nav-item-group-item">边框</a>
+    </div>
+    <div class="face-one-nav-item-group">
+        <div class="face-one-nav-item-group-title">自定义界面</div>
+        <a href="index.html#less" class="face-one-nav-item-group-item">less</a>
+    </div>
+</div> -->
+
+</div>
+</div>
+</div>
+<div class="face-one-layout-cnt">
+<div id="face-one-cnt" class="face-one-cnt markdown-body">
+<div id="face-one-sidebar" class="face-one-sidebar"></div>
+<h1 id="文档" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/date-logic/#文档"><span class="markrun-anchor-link"></span></a>文档</h1><p>方便预览,添加样式</p>
+<div class="markrun markrun--css">
+<div class="markrun-html"></div>
+<div class="markrun-code">
+<style>
+.demo pre { max-height:400px; overflow-y:auto; }
+.demo div { text-align: center; border-bottom: 1px dotted #aaa; line-height: 30px; width: 420px;}
+.demo b, .demo i { width: 60px; display: inline-block; }
+.demo b, .demo i:hover { background-color: #ccc; cursor:pointer; }
+/* 今天显示蓝色 */
+.demo--today { background-color: #87aed0; }
+/* 上个月 下个月 显示灰色 */
+.demo--lastMonth, .demo--nextMonth { background-color: #eee; }
+/* 选中日期 显示 红色 */
+.demo--on { background-color: #ce7272; }
+
+.demo-tool { position: relative; }
+.demo-tool i { min-width: 100px; text-decoration: underline; }
+.demo-tool-prev, .demo-tool-next { position: absolute; }
+.demo-tool-prev:hover, .demo-tool-next:hover { cursor: pointer; color: purple; }
+.demo-tool-prev { left:10px; }
+.demo-tool-next { right:10px; }</style>
+</div>
+<div class="markrun-source">
+<pre><code class="lang-css"><span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">pre</span> { <span class="hljs-attribute">max-height</span>:<span class="hljs-number">400px</span>; <span class="hljs-attribute">overflow-y</span>:auto; }
+<span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">div</span> { <span class="hljs-attribute">text-align</span>: center; <span class="hljs-attribute">border-bottom</span>: <span class="hljs-number">1px</span> dotted <span class="hljs-number">#aaa</span>; <span class="hljs-attribute">line-height</span>: <span class="hljs-number">30px</span>; <span class="hljs-attribute">width</span>: <span class="hljs-number">420px</span>;}
+<span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">b</span>, <span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">i</span> { <span class="hljs-attribute">width</span>: <span class="hljs-number">60px</span>; <span class="hljs-attribute">display</span>: inline-block; }
+<span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">b</span>, <span class="hljs-selector-class">.demo</span> <span class="hljs-selector-tag">i</span><span class="hljs-selector-pseudo">:hover</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ccc</span>; <span class="hljs-attribute">cursor</span>:pointer; }
+<span class="hljs-comment">/* 今天显示蓝色 */</span>
+<span class="hljs-selector-class">.demo--today</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#87aed0</span>; }
+<span class="hljs-comment">/* 上个月 下个月 显示灰色 */</span>
+<span class="hljs-selector-class">.demo--lastMonth</span>, <span class="hljs-selector-class">.demo--nextMonth</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#eee</span>; }
+<span class="hljs-comment">/* 选中日期 显示 红色 */</span>
+<span class="hljs-selector-class">.demo--on</span> { <span class="hljs-attribute">background-color</span>: <span class="hljs-number">#ce7272</span>; }
+
+<span class="hljs-selector-class">.demo-tool</span> { <span class="hljs-attribute">position</span>: relative; }
+<span class="hljs-selector-class">.demo-tool</span> <span class="hljs-selector-tag">i</span> { <span class="hljs-attribute">min-width</span>: <span class="hljs-number">100px</span>; <span class="hljs-attribute">text-decoration</span>: underline; }
+<span class="hljs-selector-class">.demo-tool-prev</span>, <span class="hljs-selector-class">.demo-tool-next</span> { <span class="hljs-attribute">position</span>: absolute; }
+<span class="hljs-selector-class">.demo-tool-prev</span><span class="hljs-selector-pseudo">:hover</span>, <span class="hljs-selector-class">.demo-tool-next</span><span class="hljs-selector-pseudo">:hover</span> { <span class="hljs-attribute">cursor</span>: pointer; <span class="hljs-attribute">color</span>: purple; }
+<span class="hljs-selector-class">.demo-tool-prev</span> { <span class="hljs-attribute">left</span>:<span class="hljs-number">10px</span>; }
+<span class="hljs-selector-class">.demo-tool-next</span> { <span class="hljs-attribute">right</span>:<span class="hljs-number">10px</span>; }
+</code></pre></div>
+</div>
+<h2 id="basic" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/date-logic/#basic"><span class="markrun-anchor-link"></span></a>basic</h2>
+    <div class="face-one-code  ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="basic-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">基础使用</div>
+                                <div class="face-one-code-info-desc">
+                                    <p><code>dateLogic.today</code> <code>dateLogic.date</code> <code>dateLogic.startWeekDay</code> <code>dateLogic.weekDayColumn</code> <code>change({date: String})</code></p>
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">import {Component} from <span class="hljs-string">'react'</span>
+import DateLogic from <span class="hljs-string">'date-logic'</span>
+import extend from <span class="hljs-string">'extend'</span>
+import cls from <span class="hljs-string">'classnames'</span>
+
+class Basic extends Component {
+    constructor(props){
+        super(props)
+        let self = this
+        this<span class="hljs-selector-class">.state</span> = {
+            date : <span class="hljs-string">''</span> ,
+            number: <span class="hljs-string">''</span>,
+            monthData : []
+        }
+    }
+    componentWillMount(){
+        let self = this
+        self<span class="hljs-selector-class">.dateL</span> = new DateLogic({
+            date: <span class="hljs-string">'2018-05-10'</span> ,
+            startWeekDay:<span class="hljs-string">'7'</span>,
+            onChange: function (data) {
+                <span class="hljs-comment">// data format equal monthData() reutrn</span>
+                self.setState({
+                    date : data<span class="hljs-selector-class">.date</span> ,
+                    monthData : extend(true,[],data.render)
+                })
+            }
+        })
+    }
+    render () {
+        let self = this
+        let columnTextMap = { <span class="hljs-string">'1'</span> : <span class="hljs-string">'Mon'</span>, <span class="hljs-string">'2'</span> : <span class="hljs-string">'Tue'</span>, <span class="hljs-string">'3'</span> : <span class="hljs-string">'Wed'</span>, <span class="hljs-string">'4'</span> : <span class="hljs-string">'Thu'</span>, <span class="hljs-string">'5'</span> : <span class="hljs-string">'Fri'</span>, <span class="hljs-string">'6'</span> : <span class="hljs-string">'Sat'</span>, <span class="hljs-string">'7'</span> : <span class="hljs-string">'Sun'</span> }
+
+        let systemData = {
+            today : self<span class="hljs-selector-class">.dateL</span><span class="hljs-selector-class">.today</span>,
+            date : self<span class="hljs-selector-class">.dateL</span><span class="hljs-selector-class">.date</span>,
+            startWeekDay : self<span class="hljs-selector-class">.dateL</span><span class="hljs-selector-class">.startWeekDay</span>,
+            weekDayColumn : self<span class="hljs-selector-class">.dateL</span><span class="hljs-selector-class">.weekDayColumn</span>,
+        }
+        return (
+            &lt;<span class="hljs-selector-tag">div</span> className=<span class="hljs-string">"basicDemo demo"</span> &gt;
+                &lt;div&gt;&lt;/div&gt;
+                &lt;pre&gt;
+                    {JSON.stringify(systemData, null, <span class="hljs-number">4</span>)}
+                &lt;/pre&gt;
+                self<span class="hljs-selector-class">.state</span><span class="hljs-selector-class">.monthData</span> = 
+                &lt;pre&gt;
+                    {JSON.stringify(self<span class="hljs-selector-class">.state</span><span class="hljs-selector-class">.monthData</span>, null, <span class="hljs-number">4</span>)}
+                &lt;/pre&gt;
+                &lt;div&gt;
+                    {
+                        self<span class="hljs-selector-class">.dateL</span><span class="hljs-selector-class">.weekDayColumn</span><span class="hljs-selector-class">.map</span>(function(item,index){
+                            return (
+                                &lt;<span class="hljs-selector-tag">b</span> key={index} &gt;{columnTextMap[item]}&lt;/b&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+                &lt;div&gt;
+                    {
+                        self<span class="hljs-selector-class">.state</span><span class="hljs-selector-class">.monthData</span><span class="hljs-selector-class">.map</span>(function(item,index){
+                            return (
+                                &lt;<span class="hljs-selector-tag">i</span>  key={index}
+                                    className={cls({
+                                        <span class="hljs-string">'demo--lastMonth'</span> : item<span class="hljs-selector-class">.lastMonth</span> ,
+                                        <span class="hljs-string">'demo--nextMonth'</span> : item<span class="hljs-selector-class">.nextMonth</span> ,
+                                        <span class="hljs-string">'demo--today'</span> : item<span class="hljs-selector-class">.today</span> ,
+                                        <span class="hljs-string">'demo--on'</span> : item<span class="hljs-selector-class">.date</span> == self<span class="hljs-selector-class">.state</span><span class="hljs-selector-class">.date</span>
+                                    })}
+                                    onClick={function(){
+                                        self<span class="hljs-selector-class">.dateL</span><span class="hljs-selector-class">.change</span>({
+                                            date : item<span class="hljs-selector-class">.date</span>
+                                        })
+                                    }}
+                                &gt;{item.day}&lt;/i&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+
+module<span class="hljs-selector-class">.exports</span> = Basic
+
+</code></pre>
+                        </div>
+                        
+                    </div>
+                                
+<h2 id="changeDays" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/date-logic/#changeDays"><span class="markrun-anchor-link"></span></a>changeDays</h2>
+    <div class="face-one-code  ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="change-days-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">ChangeDays</div>
+                                <div class="face-one-code-info-desc">
+                                    <p><code>changeDays(Number)</code></p>
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">import DateLogic from <span class="hljs-string">'date-logic'</span>;
+import extend from <span class="hljs-string">'extend'</span>;
+import { Component } from <span class="hljs-string">'react'</span>;
+import cls from <span class="hljs-string">'classnames'</span>;
+
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ChangeDays</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    constructor(props) {
+        super(props)
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">self</span> = this
+        this.state = {
+            date : <span class="hljs-string">''</span> ,
+            number: <span class="hljs-number">2</span> ,
+            monthData : []
+        }
+
+    }
+    componentWillMount(){
+        <span class="hljs-keyword">let</span> <span class="hljs-keyword">self</span> = this
+        <span class="hljs-keyword">self</span>.dateL = <span class="hljs-keyword">new</span> DateLogic({
+            date: <span class="hljs-string">'2018-05-18'</span> ,
+            startWeekDay:<span class="hljs-string">'3'</span>,
+            onChange: <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">(data)</span> </span>{
+                <span class="hljs-comment">// data format equal monthData() reutrn</span>
+                <span class="hljs-keyword">self</span>.setState({
+                    date : data.date ,
+                    monthData : extend(<span class="hljs-keyword">true</span>,[],data.render)
+                })
+            }
+        })
+    }
+    render() {
+        <span class="hljs-keyword">var</span> <span class="hljs-keyword">self</span> = this
+        <span class="hljs-keyword">let</span> columnTextMap = { <span class="hljs-string">'1'</span> : <span class="hljs-string">'Mon'</span>, <span class="hljs-string">'2'</span> : <span class="hljs-string">'Tue'</span>, <span class="hljs-string">'3'</span> : <span class="hljs-string">'Wed'</span>, <span class="hljs-string">'4'</span> : <span class="hljs-string">'Thu'</span>, <span class="hljs-string">'5'</span> : <span class="hljs-string">'Fri'</span>, <span class="hljs-string">'6'</span> : <span class="hljs-string">'Sat'</span>, <span class="hljs-string">'7'</span> : <span class="hljs-string">'Sun'</span> }
+
+        <span class="hljs-keyword">return</span> (
+            &lt;div className=<span class="hljs-string">"changeDaysDemo demo"</span>&gt;
+                &lt;div&gt;
+                    changeDays :
+                    &lt;input  
+                        value={<span class="hljs-keyword">self</span>.state.number}
+                        onChange={<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+                            <span class="hljs-comment">// 简单限制只能输入数字</span>
+                            e.target.value = Number( e.target.value.replace(/[^\d]+/g,<span class="hljs-string">''</span>).toString() )
+                            <span class="hljs-keyword">self</span>.setState({
+                                number : e.target.value
+                            })
+                        }}
+                    /&gt;
+                    天
+                    &lt;br/&gt;
+                    &lt;button onClick={<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+                                    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">self</span>.state.number){ <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span> }
+                                    <span class="hljs-keyword">self</span>.dateL.changeDays(<span class="hljs-keyword">self</span>.state.number)
+                                    <span class="hljs-keyword">self</span>.setState({
+                                        date : <span class="hljs-keyword">self</span>.dateL.date ,
+                                    })
+                                }}
+                        &gt;{<span class="hljs-string">'+'</span>+<span class="hljs-keyword">self</span>.state.number+<span class="hljs-string">'天'</span>}&lt;/button&gt;
+                    &lt;button onClick={<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(e)</span></span>{
+                                    <span class="hljs-keyword">if</span>(!<span class="hljs-keyword">self</span>.state.number){ <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span> }
+                                    <span class="hljs-keyword">self</span>.dateL.changeDays( Number(<span class="hljs-string">'-'</span>+<span class="hljs-keyword">self</span>.state.number) )
+                                    <span class="hljs-keyword">self</span>.setState({
+                                        date : <span class="hljs-keyword">self</span>.dateL.date ,
+                                    })
+                                }}
+                        &gt;{<span class="hljs-string">'-'</span>+<span class="hljs-keyword">self</span>.state.number+<span class="hljs-string">'天'</span>}&lt;/button&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    &lt;span className=<span class="hljs-string">"changeDays-tool-text"</span> &gt;
+                        {
+                            <span class="hljs-keyword">self</span>.dateL.toFormat({
+                                in:<span class="hljs-string">'YYYY-MM-DD'</span>,
+                                date:<span class="hljs-keyword">self</span>.dateL.date,
+                                output:<span class="hljs-string">'YYYY年MM月DD日'</span>
+                            })
+                        }
+                    &lt;/span&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    {
+                        <span class="hljs-keyword">self</span>.dateL.weekDayColumn.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item,index)</span></span>{
+                            <span class="hljs-keyword">return</span> (
+                                &lt;b key={index} &gt;{columnTextMap[item]}&lt;/b&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+                &lt;div&gt;
+                    {
+                        <span class="hljs-keyword">self</span>.state.monthData.map(<span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(item,index)</span></span>{
+                            <span class="hljs-keyword">return</span> (
+                                &lt;i  key={index}
+                                    className={cls({
+                                        <span class="hljs-string">'demo--lastMonth'</span> : item.lastMonth ,
+                                        <span class="hljs-string">'demo--nextMonth'</span> : item.nextMonth ,
+                                        <span class="hljs-string">'demo--today'</span> : item.today ,
+                                        <span class="hljs-string">'demo--on'</span> : item.date == <span class="hljs-keyword">self</span>.state.date
+                                    })}
+                                &gt;{item.day}&lt;/i&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+
+
+module.exports = ChangeDays
+
+</code></pre>
+                        </div>
+                        
+                    </div>
+                                
+<h2 id="changeMonth or changeYear" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/date-logic/#changeMonth or changeYear"><span class="markrun-anchor-link"></span></a>changeMonth or changeYear</h2>
+    <div class="face-one-code  ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="monthYear-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">MonthYear</div>
+                                <div class="face-one-code-info-desc">
+                                    <p><code>lastMonth()</code> <code>nextMonth()</code> <code>lastYear()</code> <code>nextYear()</code></p>
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js">import {Component} from <span class="hljs-string">'react'</span>
+import DateLogic from <span class="hljs-string">'date-logic'</span>
+import extend from <span class="hljs-string">'extend'</span>
+import cls from <span class="hljs-string">'classnames'</span>
+
+class MonthYear extends Component {
+    constructor(props) {
+        super(props)
+        this<span class="hljs-selector-class">.state</span> = {
+            monthData: []
+        }
+    }
+    componentWillMount(){
+        let self = this
+        self<span class="hljs-selector-class">.list</span> = new DateLogic({
+            date: <span class="hljs-string">'2017-09-16'</span>,
+            startWeekDay:<span class="hljs-string">'3'</span>,
+            onChange: function (data) {
+                <span class="hljs-comment">// console.log('onChange : ',data)</span>
+                self.setState({
+                    monthData : extend(true,[],data.render)
+                })
+            }
+        })
+    }
+    render() {
+        <span class="hljs-selector-tag">var</span> self = this
+        let columnTextMap = { <span class="hljs-string">'1'</span> : <span class="hljs-string">'Mon'</span>, <span class="hljs-string">'2'</span> : <span class="hljs-string">'Tue'</span>, <span class="hljs-string">'3'</span> : <span class="hljs-string">'Wed'</span>, <span class="hljs-string">'4'</span> : <span class="hljs-string">'Thu'</span>, <span class="hljs-string">'5'</span> : <span class="hljs-string">'Fri'</span>, <span class="hljs-string">'6'</span> : <span class="hljs-string">'Sat'</span>, <span class="hljs-string">'7'</span> : <span class="hljs-string">'Sun'</span> }
+        return (
+            &lt;<span class="hljs-selector-tag">div</span> className=<span class="hljs-string">"monthYearDemo demo"</span>&gt;
+                &lt;<span class="hljs-selector-tag">div</span> className=<span class="hljs-string">"demo-tool"</span>&gt;
+                    &lt;<span class="hljs-selector-tag">i</span> className=<span class="hljs-string">"demo-tool-prev"</span>
+                        onClick={function(){
+                            self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.lastYear</span>()
+                        }}
+                    &gt;lastYear&lt;/i&gt;
+                    &lt;<span class="hljs-selector-tag">i</span> className=<span class="hljs-string">"demo-tool-next"</span>
+                        onClick={function(){
+                            self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.nextYear</span>()
+                        }}
+                    &gt;nextYear&lt;/i&gt;
+                    &lt;<span class="hljs-selector-tag">b</span> className=<span class="hljs-string">"demo-tool-text"</span> &gt;
+                        {self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.toFormat</span>({
+                            <span class="hljs-keyword">in</span>:<span class="hljs-string">'YYYY-MM-DD'</span>,
+                            date:self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.date</span>,
+                            output:<span class="hljs-string">'YYYY年'</span>
+                        })}
+                    &lt;/b&gt;
+                &lt;/div&gt;
+                &lt;<span class="hljs-selector-tag">div</span> className=<span class="hljs-string">"demo-tool"</span>&gt;
+                    &lt;<span class="hljs-selector-tag">i</span> className=<span class="hljs-string">"demo-tool-prev"</span>
+                        onClick={function(){
+                            self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.lastMonth</span>()
+                        }}
+                    &gt;lastMonth&lt;/i&gt;
+                    &lt;<span class="hljs-selector-tag">i</span> className=<span class="hljs-string">"demo-tool-next"</span>
+                        onClick={function(){
+                            self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.nextMonth</span>()
+                        }}
+                    &gt;nextMonth&lt;/i&gt;
+                    &lt;<span class="hljs-selector-tag">b</span> className=<span class="hljs-string">"demo-tool-text"</span> &gt;
+                        {self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.toFormat</span>({
+                            <span class="hljs-keyword">in</span>:<span class="hljs-string">'YYYY-MM-DD'</span>,
+                            date:self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.date</span>,
+                            output:<span class="hljs-string">'MM月'</span>
+                        })}
+                    &lt;/b&gt;
+                &lt;/div&gt;
+                &lt;div&gt;
+                    {
+                        self<span class="hljs-selector-class">.list</span><span class="hljs-selector-class">.weekDayColumn</span><span class="hljs-selector-class">.map</span>(function(item,index){
+                            return (
+                                &lt;<span class="hljs-selector-tag">b</span> key={index} &gt;{columnTextMap[item]}&lt;/b&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+                &lt;div&gt;
+                    {
+                        self<span class="hljs-selector-class">.state</span><span class="hljs-selector-class">.monthData</span><span class="hljs-selector-class">.map</span>(function(item,index){
+                            return (
+                                &lt;<span class="hljs-selector-tag">i</span>  key={index}
+                                    className={cls({
+                                        <span class="hljs-string">'demo--lastMonth'</span> : item<span class="hljs-selector-class">.lastMonth</span> ,
+                                        <span class="hljs-string">'demo--nextMonth'</span> : item<span class="hljs-selector-class">.nextMonth</span> ,
+                                        <span class="hljs-string">'demo--today'</span> : item<span class="hljs-selector-class">.today</span> ,
+                                    })}
+                                &gt;{item.day}&lt;/i&gt;
+                            )
+                        })
+                    }
+                &lt;/div&gt;
+            &lt;/div&gt;
+        )
+    }
+}
+
+
+module<span class="hljs-selector-class">.exports</span> = MonthYear
+
+</code></pre>
+                        </div>
+                        
+                    </div>
+                                
+<h2 id="format" ><a class="markrun-anchor" href="../Users/GrifreeMac/Documents/github/onface/date-logic/#format"><span class="markrun-anchor-link"></span></a>format</h2><ul>
+<li>日期字符串 转 日期字符串 <code>toFormat({in:inFormatString, date:dateString, output:outputFormatString)</code>        </li>
+<li>日期对象 转 日期字符串 <code>dateToStr(dateObject, formatString)</code>        </li>
+<li>日期字符串 转 日期对象 <code>strToDate(dateString, formatString)</code></li>
+</ul>
+
+    <div class="face-one-code  ">
+                        <div class="face-one-code-F-view">
+                            <div class="face-one-code-example">
+                                <div id="format-demo" ></div>
+                            </div>
+                            <div class="face-one-code-info">
+                                <div class="face-one-code-info-title">Format</div>
+                                <div class="face-one-code-info-desc">
+                                    <p>可打开控制台查看打印数据</p>
+                                </div>
+                                <span class="face-one-code-info-switchCode fi fi-code"></span>
+                            </div>
+                        </div>
+                        <div class="face-one-code-source">
+                            <div class="face-one-code-source-tool">
+                                <span class="face-one-code-source-tool-copy fi fi-files-o"></span>
+                            </div>
+                            <pre><code class="lang-js"><span class="hljs-keyword">import</span> {Component} <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> DateLogic <span class="hljs-keyword">from</span> <span class="hljs-string">'date-logic'</span>
+<span class="hljs-keyword">import</span> extend <span class="hljs-keyword">from</span> <span class="hljs-string">'extend'</span>
+<span class="hljs-keyword">import</span> cls <span class="hljs-keyword">from</span> <span class="hljs-string">'classnames'</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Basic</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Component</span> </span>{
+    <span class="hljs-keyword">constructor</span>(props){
+        <span class="hljs-keyword">super</span>(props)
+        <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">this</span>.state = {
+            <span class="hljs-attr">date</span> : <span class="hljs-string">''</span> ,
+            <span class="hljs-attr">number</span>: <span class="hljs-string">''</span>,
+            <span class="hljs-attr">monthData</span> : []
+        }
+    }
+    componentWillMount(){
+        <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+        self.dateL = <span class="hljs-keyword">new</span> DateLogic({
+            <span class="hljs-attr">format</span>: <span class="hljs-string">'YYYY年MM月DD日'</span>, <span class="hljs-comment">// 默认输出日期格式</span>
+            date: <span class="hljs-string">'2008年02月16日'</span>, <span class="hljs-comment">// 保持与默认格式一致</span>
+        })
+    }
+    render () {
+        <span class="hljs-keyword">let</span> self = <span class="hljs-keyword">this</span>
+        <span class="hljs-keyword">let</span> systemData = {
+            <span class="hljs-attr">today</span> : self.dateL.today,
+            <span class="hljs-attr">date</span> : self.dateL.date,
+        }
+
+        <span class="hljs-keyword">let</span> formatResult = self.dateL.toFormat({
+                                <span class="hljs-attr">in</span>:<span class="hljs-string">'YYYY年MM月DD日'</span>,
+                                <span class="hljs-attr">date</span>:<span class="hljs-string">'1999年02月16日'</span>,
+                                <span class="hljs-attr">output</span>:<span class="hljs-string">'YYYY--公元年--MM--DD'</span>
+                            })
+        <span class="hljs-keyword">let</span> dateToStr = self.dateL.dateToStr(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(<span class="hljs-string">'1200-12-12'</span>) , <span class="hljs-string">'YYYY+MM_DD'</span>)
+        <span class="hljs-keyword">let</span> strToDate = self.dateL.strToDate( <span class="hljs-string">'1560/3/2'</span> , <span class="hljs-string">'YYYY/MM/DD'</span> )
+        <span class="hljs-built_in">console</span>.group(<span class="hljs-string">'formatDemo'</span>)
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'formatResult'</span>,formatResult)
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'dateToStr'</span>,dateToStr)
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'strToDate'</span>,strToDate)
+        <span class="hljs-built_in">console</span>.groupEnd()
+
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"formatDemo demo"</span> &gt;</span>
+                根据配置默认输出格式
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+例: self.dateL = new DateLogic({`
+    format: 'YYYY年MM月DD日', 
+    date: '2008年02月16日',
+`})
+                <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+                =&gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+                    self.dateL.today : {self.dateL.today} <span class="hljs-tag">&lt;<span class="hljs-name">br</span>/&gt;</span>
+                    self.dateL.date : {self.dateL.date}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>/&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>
+例: self.dateL.toFormat({`
+    in:'YYYY年MM月DD日',
+    date:'1999年02月16日',
+    output:'YYYY--公元年--MM--DD'
+`})
+                <span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+                =&gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{formatResult}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>/&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{`例: self.dateL.dateToStr(new Date('1200-12-12') , 'YYYY+MM_DD')`}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+                =&gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{dateToStr}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">hr</span>/&gt;</span>
+
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{`例: String(self.dateL.strToDate( '1560/3/2' , 'YYYY/MM/DD' ))`}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+                =&gt;
+                <span class="hljs-tag">&lt;<span class="hljs-name">pre</span>&gt;</span>{String(strToDate)}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        )
+    }
+}
+
+
+<span class="hljs-built_in">module</span>.exports = Basic
+
+</code></pre>
+                        </div>
+                        
+                    </div></div>
+</div>
+</div>
+</div>
+<script>
+Array.from(document.querySelectorAll('.face-one-nav-item-label')).forEach(function (node) {
+    if (node.href) {
+        var pathname = node.href.replace(/\?.*/, '')
+        if (pathname === location.origin + location.pathname + location.hash) {
+            node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-label--on')
+        }
+    }
+})
+var faceOneGetParent = function faceOneGetParent (el, className) {
+   if (el.parentNode.nodeName.toLowerCase() === 'html') {
+       return null
+   }
+   var parentClassName = el.parentNode.getAttribute('class')
+   var classNames = ''
+   if (parentClassName) {
+       classNames = parentClassName.split(' ')
+   }
+   if (classNames.indexOf(className) !== -1) {
+       return el.parentNode
+   }
+   else {
+       return faceOneGetParent(el.parentNode, className)
+   }
+}
+Array.from(document.querySelectorAll('.face-one-nav-item-group-item')).forEach(function (node) {
+    addAvativeClass(node)
+    function addAvativeClass (node)  {
+        if (node.href) {
+            var pathname = node.href.replace(/\?.*/, '')
+            if (pathname === location.origin + location.pathname + location.hash) {
+                node.setAttribute('class', node.getAttribute('class') + ' ' + 'face-one-nav-item-group-item--on')
+                var parentNode = faceOneGetParent(node, 'face-one-nav-item--group')
+                if (parentNode) {
+                    parentNode.setAttribute('class', parentNode.getAttribute('class') + ' ' + 'face-one-nav-item--group-on')
+                }
+            }
+        }
+    }
+
+})
+</script>
+<div class="face-one-foot">
+    <div class="face-one-foot-F-inner">
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-github"></span>
+                Github
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/date-logic" class="face-one-foot-group-item-link">date-logic</a>
+                - 项目源码
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-link"></span>
+                相关站点
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://onface.github.io/component-spec">component-spec</a>
+                - 组件规范
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/module" class="face-one-foot-group-item-link">module</a>
+                - 开源项目脚手架
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="http://onface.cc/" class="face-one-foot-group-item-link">onface.cc</a>
+                - 资源集合
+            </div>
+        </div>
+        <div class="face-one-foot-group">
+            <div class="face-one-foot-group-title">
+                <span class="face-one-foot-group-title-icon fi fi-team"></span>
+                社区
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/date-logic/issues" class="face-one-foot-group-item-link">Github issues</a>
+            </div>
+            <div class="face-one-foot-group-item">
+                <a href="https://github.com/onface/date-logic/issues/new" class="face-one-foot-group-item-link">提交bug</a>
+            </div>
+        </div>
+        <div class="face-one-foot-copyright">
+            <a href="../index.html" class="face-one-foot-copyright-title">
+                <img src="theme/media/logo.svg" class="face-one-foot-copyright-title-logo" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<script src="theme/jquery.js"></script>
+<script>delete window.$</script>
+<script src="theme/face/face.js" ></script>
+<script data-markrun-lastrun="true">
+                        document.write('<scri' + 'pt src="./basic.demo.js?v=0.1.7"' + '" ></sc' + 'ript>')
+                        </script><script data-markrun-lastrun="true">
+                        document.write('<scri' + 'pt src="./changeDays.demo.js?v=0.1.7"' + '" ></sc' + 'ript>')
+                        </script><script data-markrun-lastrun="true">
+                        document.write('<scri' + 'pt src="./monthYear.demo.js?v=0.1.7"' + '" ></sc' + 'ript>')
+                        </script><script data-markrun-lastrun="true">
+                        document.write('<scri' + 'pt src="./format.demo.js?v=0.1.7"' + '" ></sc' + 'ript>')
+                        </script></body>
+</html>
