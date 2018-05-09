@@ -26,8 +26,8 @@
                 <div class="face-one-feature-item">
                     <img src="./doc/theme/media/cogwheel.svg" alt="" class="face-one-feature-item-photo">
                     <br />
-                        <div class="face-one-feature-item-label">定制开发</div>
-                        <div class="face-one-feature-item-desc">提供样式文件便于二次开发</div>
+                        <div class="face-one-feature-item-label">底层开发</div>
+                        <div class="face-one-feature-item-desc">提供渲染日历基础API便于二次开发</div>
                 </div>
             </td>
             <td align="center" >
@@ -35,7 +35,7 @@
                     <img src="./doc/theme/media/browser.svg" alt="" class="face-one-feature-item-photo">
                     <br />
                     <div class="face-one-feature-item-label">用户体验</div>
-                    <div class="face-one-feature-item-desc">界面细致、即时反馈，更好的用户体验</div>
+                    <div class="face-one-feature-item-desc">服务 <a href="http://onface.github.io/date.react">date.react</a> 组件提供更好的用户体验</div>
                 </div>
             </td>
             <td align="center" >
@@ -44,7 +44,7 @@
                     <img src="./doc/theme/media/share.svg" alt="" class="face-one-feature-item-photo">
                     <br />
                         <div class="face-one-feature-item-label">组件生态</div>
-                        <div class="face-one-feature-item-desc">可与 <a href="http://onface.github.io/">onface</a> 中任意组件组合使用</div>
+                        <div class="face-one-feature-item-desc">可与任意组件组合使用</div>
                 </div>
             </td>
         </tr>

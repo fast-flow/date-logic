@@ -32,7 +32,7 @@
     html: '<div id="basic-demo" ></div>',
     js: './basic.demo.js',
     source: './Basic.js',
-    open: false,
+    open: true,
 }
 ````
 
@@ -46,7 +46,7 @@
     html: '<div id="change-days-demo" ></div>',
     js: './changeDays.demo.js',
     source: './ChangeDays.js',
-    open: false,
+    open: true,
 }
 ````
 
@@ -60,7 +60,7 @@
     html: '<div id="monthYear-demo" ></div>',
     js: './monthYear.demo.js',
     source: './MonthYear.js',
-    open: false,
+    open: true,
 }
 ````
 
@@ -77,6 +77,6 @@
     html: '<div id="format-demo" ></div>',
     js: './format.demo.js',
     source: './Format.js',
-    open: false,
+    open: true,
 }
 ````
